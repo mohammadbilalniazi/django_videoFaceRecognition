@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+  {% load jalali_tags %} {% load static %}
+
+  <!-- Mirrored from rtl-temp.ir/Theme/sdfsdfdsfds/vertical-rtl/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:42:14 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
+    />
+    <title>امریت نظارت وهماهنگی کنترولران ریاست محاسبات</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="ThemeDesign" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link
+      href="{% static 'assets/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/icons.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}"
+      type="text/css"
+      media="all"
+      rel="stylesheet"
+    />
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+
+    <style>
+      input,
+      optgroup,
+      select,
+      textarea {
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        display: block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+      }
+
+      .alert-danger {
+        color: white;
+        background-color: #f24734;
+        font-size: 200%;
+      }
+      .alert-success {
+        color: rgb(130 227 130);
+        background-color: #cfffea;
+        font-size: 200%;
+      }
+    </style>
+  </head>
+
+  <body class="fixed-left" style="overflow: visible">
+    <!-- Loader -->
+    <div id="preloader" style="display: none">
+      <div id="status" style="display: none">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="enlarged">
+      <!-- ========== Left Sidebar Start ========== -->
+
+      <!-- Left Sidebar End -->
+
+      <!-- Start right Content here -->
+
+      <div class="content-page" style="margin-right: 0px">
+        <!-- Start content -->
+        <div class="content">
+          <!-- Top Bar Start -->
+          <div class="topbar">
+            <div class="topbar-left	d-none d-lg-block" style="width:20%;color:white">
+              <div class="text-center">
+                  <a class="logo">امریت نظارت وهماهنگی کنترولران ریاست محاسبات</a>
+              </div>
+          </div>
+
+          {% include 'navbar.html' %}
+          </div>
+          <!-- Top Bar End -->
+
+          <div class="page-content-wrapper">
+            <div class="container-fluid">
+              <br />
+              <!-- end page title -->
+
+              <div class="col-12">
+                <div class="card card-primary card-outline">
+                  <div class="card-header" style="background-color: white;">
+                    <div class="row" style="margin-bottom: 10vh;font-size: medium; font-weight: bold;margin: 0 auto;">
+                      <div
+                        class="col-lg-12"
+                        style="margin-bottom: 3vh; margin-top: 3vh;background-color: red"
+                        id="error"
+                      ></div>
+                      <div
+                        class="col-lg-12"
+                        style="margin-bottom: 3vh;background-color: rgb(130 227 130);color:black;text-align: center"
+                        id="success"
+                      ></div>
+                    </div>
+                    
+                    <form method="POST" action="/haziri/export_excel/">
+                      {% csrf_token %}
+                      <div class="row" style="margin-bottom: 60px">
+                        <div class="col-lg-3" style="margin:auto" id="mudeeriaths_ihasaya_div">
+                          <select id="mudeeriath" name="mudeeriath" class="select" >   
+                              <option value="all">  مدیریت </option>  
+                              {% for mudeeriath in mudeeriaths %}
+                              <option value={{mudeeriath.id}}>{{mudeeriath}}</option>  
+                              {% endfor %}
+                          </select>
+                      </div>
+                        <!-- <div class="col-lg-3" style="margin:auto" id="start_date_div">
+                                      <select id="start_date"  class="select">   
+                                      
+                                      </select>
+                                  </div> -->
+                        <span >
+                            <Button type="submit" name="excel_report" class="btn btn-outline-primary float-left">
+                                <i class="fas fa-download"></i> &nbsp; رپورت excel 
+                            </Button>
+                        </span>          
+                        <div style="margin-right:20px;display:inline" id="az_label">از:</div>
+                        <div
+                          class="col-lg-3"
+                          style="margin: auto"
+                          id="start_date_div"
+                        >
+                          {{form_start_end_date.start_date}}
+                        </div>
+                        <div style="display:inline" id="ila_label">الی:</div>
+                        <div
+                          class="col-lg-3"
+                          style="margin: auto"
+                          id="end_date_div"
+                        >
+                          {{form_start_end_date.end_date}}
+                        </div>
+                        <div
+                          class="col-lg-3"
+                          style="margin: auto"
+                          id="created_by_div"
+                        >
+                          <input type="hidden" name="created_by" id="created_by" value="{{user.username}}">
+                          <input type="hidden" name="haziri_status" id="haziri_status">
+                          <input type="hidden" name="haziri_details_status" id="haziri_details_status">
+                        </div>
+                    </form>
+                      <!-- 
+                                <div class="col-lg-5" style="margin:auto;display: inline;" id="start_end_date">
+                                    <span style="display:inline;margin-right:5%">از:</span>
+                                    <span style="display:inline;margin-right:1%;margin-left:2%"> {{form_start_end_date.start_date}} </span>
+                                    <span>تا:</span>
+                                    <span  style="display:inline;margin-left:5%;margin-right:1%"> {{form_start_end_date.end_date}} </span>
+                                </div> -->
+                    </div>
+                    <div class="card-tools form-inline">
+                      {% comment %} {% if add_haziri %} {% endcomment %}
+                      <a
+                        href=""
+                        class="btn btn-outline-success float-left"
+                        id="post_haziri"
+                      >
+                        <i class="fa fa-plus-circle"></i> &nbsp;  <span id="irsal_haziri_label">ارسال حاضری</span>
+                        
+                      </a>
+                      {% comment %} {% endif %} {% endcomment %}
+
+                      <script>
+                        function mudeeriaths_ihasaya(mudeeriath_id = "all") {
+                          console.log("mudeeriaths.value=", mudeeriath_id);
+                          if(mudeeriath_id=="all"){
+                            alert("مدیریت را انتخاب کنید");
+                            // return 
+                          }
+                          console.log("called mudeeriaths_ihasaya mudeeriath.value",mudeeriath_id)
+                            mudeeriath_element=document.getElementById("mudeeriath");
+                            console.log("mudeeriath_element=",mudeeriath_element.value);
+                            mudeeriath_id=mudeeriath_element.value;
+                            start_date=document.getElementById("start_date_input").value;
+                             //console.log("start_date=",start_date);
+                            end_date=document.getElementById("end_date_input").value;
+                            
+                            if (mudeeriath_id=="all")
+                            {
+                            url="/mudeeriath/Search";
+                            }
+                            else
+                            {
+                            url="/hawala/mudeeriath/Search/"+mudeeriath_id+"/"+change_date(start_date)+"/"+change_date(end_date)+"/"+controll_status+"/";
+                            }
+                          //url = "/mudeeriath/Search";
+                          fetch(url, {
+                            method: "GET",
+                            header: { "X-Requested-With": "XMLHttpRequest" },
+                          })
+                            .then((response) => response.json())
+                            .then((data) => {
+                              const mudeeriaths_for_ihasayaContainer =document.querySelector("#mudeeriaths");
+                              if (mudeeriath_id == "all") {
+                                mudeeriaths_for_ihasayaContainer.innerHTML = "";
+                              }
+
+                              console.log(data);
+                              class Mudeeriaths {
+                                constructor(
+                                  no,
+                                  id,
+                                  mudeeriath_name,
+                                  mudeeriath_code
+                                ) {
+                                  this.no = no;
+                                  this.id = id;
+                                  this.mudeeriath_name = mudeeriath_name;
+                                  this.mudeeriath_code = mudeeriath_code;
+                                }
+
+                                addHtml() {
+                                  if (mudeeriath_id == "all") {
+                                    // دفعه اولی که تمام مدیریت ها را ما میخواهیم لیست کنیم
+                                    let html = `<option value="${this.id}">${this.mudeeriath_name}</option>`; //beforeend
+                                    mudeeriaths_for_ihasayaContainer.insertAdjacentHTML(
+                                      "beforeend",
+                                      html
+                                    );
+                                  } else {
+                                    //$(`.id_100 option[value=${mudeeriath_id}]`).attr('selected','selected');
+                                    $("#select_id")
+                                      .val(`${mudeeriath_id}`)
+                                      .change();
+                                  }
+                                }
+                              }
+
+                              let mudeeriaths_list = [];
+                              for (key in data) {
+                                mudeeriaths_list.push(
+                                  new Mudeeriaths(
+                                    key,
+                                    data[key]["id"],
+                                    data[key]["mudeeriath_name"],
+                                    data[key]["mudeeriath_code"]
+                                  )
+                                );
+                              }
+                              mudeeriaths_list.forEach((mudeeriath) =>
+                                mudeeriath.addHtml()
+                              );
+                              if (mudeeriath_id == "all") {
+                                $("#mudeeriaths").prepend(
+                                  $(
+                                    `<option value="all" selected>  مدیریت </option>`
+                                  )
+                                );
+                              }
+                            });
+                          //})
+                          return;
+                        }
+
+                       // mudeeriaths_ihasaya("all");
+
+                        function change_date(string_date)
+                        {
+                        var momentDate=moment(string_date);
+                        //return momentDate.calendar();
+                        return momentDate.format("YYYY-MM-DD");
+                         //return mydate;
+                        }
+                      </script>
+                      <script src="{% static 'assets/js/moment.js' %}"></script>
+                      <script src="{% static 'assets/js/controller/controllers_haziri.js' %}"></script>
+                      
+                      <script>
+                        controllers_haziri();      
+                      </script>
+                      <!-- <script src="{% static 'assets/js/"></script> -->
+                      <script>
+                         function getCookie(name) {
+                             let cookieValue = "all";
+                             if (document.cookie && document.cookie !== '') {
+                                 const cookies = document.cookie.split(';');
+                                 for (let i = 0; i < cookies.length; i++) {
+                                     const cookie = cookies[i].trim();
+                                     // Does this cookie string begin with the name we want?
+                                     if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                         break;
+                                     }
+                                 }
+                             }
+                             return cookieValue;
+                         }
+
+
+                        const csrftoken = getCookie('csrftoken');
+
+
+                        const post_haziri = document.getElementById("post_haziri");
+                             const haziri_form=document.querySelector("haziri_form");
+                             post_haziri.addEventListener("click", e => {
+                                 e.preventDefault();
+                                 mudeeriath=document.getElementById("mudeeriath").value;
+                                 if(mudeeriath=="all"){
+                                  alert("یک مدیریت انتخاب شود");
+                                  return ;
+                                 }
+                                 user_id=document.getElementsByClassName('user_id');
+                                 mudeeriath=document.getElementsByClassName('mudeeriath');
+                                 total_present=document.getElementsByClassName('total_present');
+                                 total_absent=document.getElementsByClassName('total_absent');
+                                 total_leave=document.getElementsByClassName('total_leave');
+                                 kaifyath_haziri=document.getElementsByClassName('kaifyath_haziri');
+                                 month=document.getElementsByClassName('month');
+                                 report_date=document.getElementsByClassName('report_date');
+                                 start_date=document.getElementById("start_date_input").value;
+                                 end_date=document.getElementById("end_date_input").value;
+                                 
+                                 created_by=document.getElementById('created_by').value;
+                                 haziri_status=document.getElementById("haziri_status").value;
+                                 haziri_details_status=document.getElementById("haziri_details_status").value;
+
+                                 total_tafrihi=document.getElementsByClassName('total_tafrihi');
+                                 total_zaroori=document.getElementsByClassName('total_zaroori');
+                                 total_marizi=document.getElementsByClassName('total_marizi');
+                                 total_waladi=document.getElementsByClassName('total_waladi');
+                                 total_hajj=document.getElementsByClassName('total_hajj');
+                                 
+
+                                //  console.log("################haziri_form=",haziri_form)
+                                 const formData = new FormData();
+                                 //console.log(report_date)
+                                 csrf=document.getElementsByName("csrfmiddlewaretoken").value;
+                                //  console.log("user_id.length=",user_id.length)
+                                // postForm={}
+                                 //postForm=[]
+                                 haziri_details_list=[]//#################yazrzi format
+                                 let k=0;
+                                 for(let i=0; i<user_id.length; i++){
+                                    obj_dict_haziri_details={'user_id':parseInt(user_id[i].value),"kaifyath_haziri":kaifyath_haziri[i].value,
+                                    'total_present':parseInt(total_present[i].value),
+                                    'total_absent':parseInt(total_absent[i].value),
+                                    'total_leave':parseInt(total_leave[i].value),
+
+                                    'total_tafrihi':parseInt(total_tafrihi[i].value),
+                                    'total_zaroori':parseInt(total_zaroori[i].value),
+                                    'total_marizi':parseInt(total_marizi[i].value),
+                                    'total_waladi':parseInt(total_waladi[i].value),
+                                    'total_hajj':parseInt(total_hajj[i].value),
+
+                                    'status':0};
+          
+                                    haziri_details_list.push(obj_dict_haziri_details);
+                                    k=i;
+                                }
+                                
+                                url="/haziri/haziri_details/";
+                                end_date=change_date(end_date)
+                                start_date=change_date(start_date) 
+                                report_date=change_date(report_date[0].value)
+
+                                postForm={
+                                  "mudeeriath":parseInt(mudeeriath[0].value),
+                                  "month":parseInt(month[0].value),
+                                  "created_by":created_by,
+                                  "report_date":report_date,
+                                  "start_date":start_date,
+                                  "end_date":end_date,
+                                  //"status":parseInt(haziri_details_status),
+                                 // "haziri_details_set":haziri_details_list                          
+                                 "status":0,
+                                 "haziri_details_set":haziri_details_list
+                                 }
+                                 console.log("postForm=",postForm)
+                                 //console.log(postForm)
+                                 fetch(url, {
+                                        method: 'POST',
+                                        body:JSON.stringify(postForm),
+                                         headers:{'content-type':'application/json',
+                                         'X-CSRFToken':getCookie('csrftoken')},
+                                     })
+                                     .then(response => {
+                                        console.log("response=",response);
+                                            success=document.getElementById("success");
+                                            success.innerHTML="حاضری ";
+                                    })
+                                     .then(data => {console.log("data=",data);
+                                     controllers_haziri();
+                                     })
+                                     .catch((error) => {
+                                         console.log('Error:', error);
+                                     });
+                                     return false;
+                             })
+
+                      </script>
+                    </div>
+                  </div>
+
+                  <div class="card-body" style="background-color: white">
+                    <div id="content-main">
+                      <div class="module" id="changelist">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="row">
+                              <div class="col-12 col-sm-8">
+                               
+                              </div>
+                              <div class="col-12 col-sm-4"></div>
+                            </div>
+                            <hr />
+
+                            <div class="card">
+                              <div class="card-body table-responsive p-0">
+                                <form id="haziri_form">
+                                  {% csrf_token %}
+                                  <table
+                                    id="result_list"
+                                    class="table table-striped"
+                                  >
+                                    <thead>
+                                      <tr>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          #
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          اسم
+                                        </th>
+
+                                        <th
+                                        class="sorting"
+                                        tabindex="0"
+                                        rowspan="1"
+                                        colspan="1"
+                                      >
+                                        اسم پدر
+                                      </th>
+
+                                    
+
+                                    <th
+                                    class="sorting"
+                                    tabindex="0"
+                                    rowspan="1"
+                                    colspan="1"
+                                  >
+                                    بست
+                                  </th>
+
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          عنوان وظیفه 
+                                        </th>
+
+                                        
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                       
+                                        مدیریت
+                                      </th>
+
+                                      {% comment %} <th
+                                      class="sorting"
+                                      tabindex="0"
+                                      rowspan="1"
+                                      colspan="1"
+                                    >
+                                          ایدی کاربر
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          ایدی مدیریت
+                                        </th>{% endcomment %}
+                                        <th></th>
+                                        <th></th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        > 
+                                          حا ضر 
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          غیر حاضر
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          رقعه
+                                        </th>
+
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        > 
+                                        تفریحی  
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                        ضروری
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          مریضی
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          ولادی
+                                        </th>
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                          حج
+                                        </th>
+
+                                        <th
+                                          class="sorting"
+                                          tabindex="0"
+                                          rowspan="1"
+                                          colspan="1"
+                                        >
+                                        ملاحضات
+                                        </th>
+
+                                        <th></th>
+                                      
+                                      <th
+                                      class="sorting"
+                                      tabindex="0"
+                                      rowspan="1"
+                                      colspan="1"
+                                    >
+                                      حالت
+                                    </th>
+                                        
+                                      </tr>
+                                    </thead>
+                                    <tbody id="haziri_details"></tbody>
+                                  </table>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-5">
+                            <div
+                              class="dataTables_info"
+                              role="status"
+                              aria-live="polite"
+                            ></div>
+                          </div>
+
+                          <div class="col-7">
+                            <ul
+                              class="pagination pagination-sm m-0 float-right"
+                            ></ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br class="clear" />
+              </div>
+              <!-- container fluid -->
+            </div>
+            <!-- Page content Wrapper -->
+          </div>
+          <!-- content -->
+
+          <footer class="footer">
+            <span class="d-none d-md-inline-block">
+              تمام حقوق استفاده با آمریت هماهنګی ومراقبت از کنترولران مقیم
+              واحدهای بودجوي محفوظ میباشد.</span
+            >
+          </footer>
+        </div>
+        <!-- End Right content here -->
+      </div>
+
+      <!-- END wrapper -->
+
+      <!-- jQuery  -->
+      <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+      <script src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
+
+      <script src="{% static 'assets/js/axios.min.js' %}"></script> 
+      <script src="{% static 'assets/js/language_handling.js' %}"></script>
+      
+      <script>
+          // {% comment %} make_keys(); {% endcomment %}
+              select_language();
+          // {% comment %} list_saved_languages(); {% endcomment %}
+      </script>
+      <!-- App js -->
+      <script src="{% static 'assets/js/app.js' %}"></script>
+
+      <!-- Mirrored from rtl-temp.ir/Theme/Zinzer/vertical-rtl/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:46:16 GMT -->
+    </div>
+  </body>
+</html>

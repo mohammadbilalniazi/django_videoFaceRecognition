@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html >
+    {% load jalali_tags %}
+{% load static %}
+
+<!-- Mirrored from rtl-temp.ir/Theme/sdfsdfdsfds/vertical-rtl/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:42:14 GMT -->
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title  id="amiriath_nazarath_wa_hamahangi_controlleran_riasath_muhasibath_label2">امریت نظارت وهماهنگی کنترولران ریاست محاسبات</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="ThemeDesign" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+        <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css">
+       
+
+        <link href="/static/admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css" type="text/css" media="all" rel="stylesheet">
+
+
+        
+
+
+    
+     
+        <style>
+            input, optgroup, select, textarea {
+                margin: 0;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                display: block;
+                width: 100%;
+                height: calc(1.5em + 0.75rem + 2px);
+            }
+
+            
+       
+            .alert-danger {
+                color: white;
+                background-color: #f24734;
+                font-size: 200%;
+            }
+            .alert-success {
+                color: #18744d;
+                background-color: #cfffea;
+                font-size: 200%;
+            }
+              
+  
+             
+        </style>
+    </head>
+    <body class="fixed-left"  style="overflow: visible;">
+
+        <!-- Loader -->
+        <div id="preloader" style="display: none;">
+            <div id="status" style="display: none;">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Begin page -->
+        <div id="wrapper" class="enlarged">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            {% comment %} <div class="left side-menu">
+                <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+                    <i class="mdi mdi-close"></i>
+                </button>
+
+                <div class="left-side-logo d-block d-lg-none">
+                    <div class="text-center">
+                        
+                        <a href="index-2.html" class="logo"><img src="/static/assets/images/logo_dark.png" height="20" alt="logo"></a>
+                    </div>
+                </div>
+
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 1121.25px;"><div class="sidebar-inner slimscrollleft" style="overflow: hidden; width: auto; height: 1121.25px;">
+                    
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li class="menu-title">اصلی</li>
+
+                            <li>
+                                <a href="/admin_panel/" class="waves-effect">
+                                    <i class="dripicons-home"></i>
+                                    <span> داشبورد <span class="badge badge-success badge-pill float-right">3</span></span>
+                                </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="/admin_panel/" class="waves-effect"><i class="dripicons-briefcase"></i> <span> احصایه<span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></span></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="ui-alerts.html"></a>مدیریت کنترول وزارت شهدأ و معلولین</li>
+                                    <li><a href="ui-badge.html"></a>مدیریت کنترول وزارت مالیه</li>
+                                    <li><a href="ui-buttons.html"></a>مدیریت کنترول وزارت شهرسازی</li>
+                                    <li><a href="ui-cards.html"></a>مدیریت کنترول وزارت دفاع</li>
+                                    <li><a href="ui-dropdowns.html"></a>مدیریت کنترول وزارت داخله</li>
+                                    <li><a href="ui-navs.html"></a>مدیریت کنترول شرکت برشنا</li>
+                                    <li><a href="ui-tabs-accordions.html"></a>مدیریت کنترول پوهنتون کابل</li>
+                                    <li><a href="ui-modals.html"></a>مدیریت کنترول ملالی زیژنتون</li>
+                                    
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-archive"></i> <span>  م 16 ها  </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="advanced-alertify.html">مسترد شده ها</a></li>
+                                    <li><a href="advanced-rating.html">ویزه شده ها</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-rocket"></i> <span> ایجاد تغییرات </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                  
+                            </li>
+
+                            <li>
+                                <a href="calendar.html" class="waves-effect"><i class="dripicons-calendar"></i><span> تقویم </span></a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-document"></i><span>کتابخانه</span> <span class="badge badge-warning badge-pill float-right">8</span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="form-elements.html">فرامین</a></li>
+                                    <li><a href="form-validation.html">قوانین </a></li>
+                                    <li><a href="form-advanced.html">مکاتیب </a></li>
+                                    <li><a href="form-editors.html">ویرایشگران فرم</a></li>
+                                    <li><a href="form-uploads.html">متحدالمال ها</a></li>
+                                    <li><a href="form-mask.html">جراید</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-graph-bar"></i><span> نمودار </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="charts-morris.html">نمودار موریس</a></li>
+                                    <li><a href="charts-chartist.html">نمودار چارتیست</a></li>
+                                    <li><a href="charts-chartjs.html">نمودار چارت</a></li>
+                                    <li><a href="charts-flot.html">نمونه فلوت</a></li>
+                                    <li><a href="charts-c3.html">نمودار C3</a></li>
+                                    <li><a href="charts-other.html">نمودار تهیه جی کوئری</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-view-thumb"></i><span> جداول ها </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="tables-basic.html">جداول پایه</a></li>
+                                    <li><a href="tables-datatable.html">جدول داده ها</a></li>
+                                    <li><a href="tables-responsive.html">جدول پاسخگو</a></li>
+                                    <li><a href="tables-editable.html">میز قابل ویرایش</a></li>
+                                </ul>
+                            </li>
+
+
+                          
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-medical"></i><span> ثبت حواله</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div><div class="slimScrollBar" style="background: rgb(158, 165, 171); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; left: 1px; height: 1121.5px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; left: 1px;"></div></div> <!-- end sidebarinner -->
+            </div> {% endcomment %}
+            <!-- Left Sidebar End -->
+
+            <!-- Start right Content here -->
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+
+                    <!-- Top Bar Start -->
+                    <div class="topbar"style="height:10vh">
+
+                        <div class="topbar-left	d-none d-lg-block" style="width:20%;color:white;display: flex;">
+                            <div class="text-center" >
+                                {% comment %} <img src="/static/img/logo_mof.jpg" width="100" height="100" style="float:right;width:12%; height:100%" style="float:right"> {% endcomment %}
+                            </div>
+                            <div class="text-center" style="float:right;margin-right:2%">
+                                <a class="logo"  id="amiriath_nazarath_wa_hamahangi_controlleran_riasath_muhasibath_label"><span >امریت نظارت وهماهنگی کنترولران ریاست محاسبات</span></a>
+                            </div>
+                        </div>
+
+                         <nav class="navbar-custom">
+
+                             <!-- Search input -->
+                             <div class="search-wrap" id="search-wrap">
+                                <div class="search-bar">
+                                    <input class="search-input" type="search" placeholder="جستجو">
+                                    <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+                                        <i class="mdi mdi-close-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <ul class="list-inline float-right mb-0">
+                                <!-- <li class="list-inline-item dropdown notification-list">
+                                  <a
+                                    class="nav-link waves-effect toggle-search"
+                                    href="#"
+                                    data-target="#search-wrap"
+                                  >
+                                    <i class="mdi mdi-magnify noti-icon"></i>
+                                  </a>
+                                </li> -->
+                
+                                <li class="list-inline-item dropdown notification-list">
+                                  <a
+                                    class="nav-link dropdown-toggle arrow-none waves-effect"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    role="button"
+                                    aria-haspopup="false"
+                                    aria-expanded="false"
+                                  >
+                                    <!-- <i class="mdi mdi-bell-outline noti-icon"></i>
+                                    <span class="badge badge-danger badge-pill noti-icon-badge"
+                                      >3</span
+                                    > -->
+                                  </a>
+                                  <div
+                                    class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg dropdown-menu-animated"
+                                  >
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                      <h5>پیام ها (۳)</h5>
+                                    </div>
+                                  </div>
+                                </li>
+                
+                                <li
+                                  class="list-inline-item dropdown notification-list nav-user"
+                                >
+                                  <a
+                                    class="nav-link dropdown-toggle arrow-none waves-effect"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    role="button"
+                                    aria-haspopup="false"
+                                    aria-expanded="false"
+                                  >
+                                    
+                                    <span class="d-none d-md-inline-block ml-1">
+                                      {{user.username}}<i class="mdi mdi-chevron-down"></i
+                                    ></span>
+                                  </a>
+                                  <div
+                                    class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown"
+                                  >
+                                    <a
+                                      class="dropdown-item"
+                                      
+                                      ><i class="dripicons-user text-muted"></i> پروفایل</a
+                                    >
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/admin/logout/"
+                                      ><i class="dripicons-exit text-muted"></i> خروج</a
+                                    >
+                                  </div>
+                                </li>
+                              </ul>
+    
+                            <ul class="list-inline menu-left mb-0">
+                                <!-- <li class="list-inline-item">
+                                    <button type="button" class="button-menu-mobile open-left waves-effect">
+                                        <i class="mdi mdi-menu"></i>
+                                    </button>
+                                </li> -->
+                                <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span id="zuban_label"> زبان </span><i class="mdi mdi-plus"></i>
+                                          
+                                     </a>
+                                    <div class="dropdown-menu dropdown-menu-animated">
+                                        {% for row in languages %}
+                                         <a class="dropdown-item" href="/language/assign_language/{{row.language}}"><span >  {{row.language}}</span></a>
+                                         {% endfor %}
+                                         {% comment %} <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#" ><span id="paywand_juda_shuda"> پیوند جدا شده </span></a> {% endcomment %}
+                                     </div>
+                                 </li>
+                                
+                                <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                                   <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span id="jalsa"> جلسه </span><i class="mdi mdi-plus"></i>
+                                        {% if num_notifications %}
+                                        <i class="mdi mdi-bell-outline noti-icon"></i>
+                                        <span class="badge badge-danger badge-pill noti-icon-badge">{{num_notifications}}</span>   
+                                        {% endif %}   
+                                    </a>
+                        
+                                   <div class="dropdown-menu dropdown-menu-animated">
+                                    {% if add_jalsa %}   <a class="dropdown-item" href="/admin/hawala/jalsa/add/"> <span id="jalsa_ilan">  اعلان جلسه </span></a> {% endif %}
+                                        <a class="dropdown-item" href="/admin/hawala/jalsa/"><span id="tafseel_jalsa">   تفصیل جلسه    </span></a>
+                              
+                                    </div>
+                                </li>
+
+                                
+                                <li class="list-inline-item notification-list d-none d-sm-inline-block">
+                                    <a href="/admin/hawala/message/" class="nav-link waves-effect">
+                                        <span id="payam_rasan_label">    پیام رسان  </span>
+                                     </a>
+                                     
+                                     {% if view_haziri %}
+                                     <a href="/haziri/haziri_details/form/" class="nav-link waves-effect">
+                                         <span id="haziri_label">    حاضری  </span>
+                                     </a> {% endif %}
+                                     {% if view_hawala %}
+                                    <a href="/hawala/hawala/" class="nav-link waves-effect">
+                                        <span id="hawala_label">    حواله </span>
+                                     </a>
+                                     {% endif %}
+                                     {% if view_hawala %}
+                                     <a href="/admin/hawala/thadyath/" class="nav-link waves-effect">
+                                        <span id="thadyath_label">    تادیات </span>
+                                     </a>
+                                     {% endif %}
+                                     <a href="/admin/hawala/controller/" class="nav-link waves-effect">
+                                      <span id="controller_label">  کنترولر  </span>
+                                     </a>
+                                     <a href="/admin/hawala/mudeeriath/" class="nav-link waves-effect">
+                                        <span id="mudeeriath_label">    مدیریت </span>
+                                     </a>
+                                     {% if view_kitabkhana %}
+
+                                     <a href="/api/kitabkhana/show/" class="nav-link waves-effect">
+                                       <span id="kitabkhana_label">   کتابخانه  </span>
+                                     </a>
+                                     {% endif %}
+                                     <a href="/admin" class="nav-link waves-effect">
+                                      <span id="admin_label">  ادمین  </span>
+                                    </a>
+                                     {% if view_hawala %}
+                                    <a href="/api/show/" class="nav-link waves-effect">
+                                     <span id="ihsaya_label">   احصایه  </span>
+                                    </a>
+                                    {% endif %}
+                    
+                                </li> 
+
+
+                            </ul> 
+
+                        </nav> 
+
+                    </div>
+                    <!-- Top Bar End -->
+
+                    <div class="page-content-wrapper ">
+
+                        <div class="container-fluid">
+
+                            <br> 
+                             <!-- end page title -->
+  
+                             <div class="row">
+                             <div class="col-lg-2"></div>
+                                 <div class="col-lg-8">
+                                     <div class="card m-b-30">
+                                         <div class="card-body"> 
+              
+                                             <!-- <h4 class="mt-0 header-title">ثبت سند</h4> -->
+                                               
+                                        <div>
+                                            {% if messages %}
+                                              {% for message in messages %}
+                                                    {% if message.tags == "error" %}
+                                                        <div class='alert alert-danger'>
+                                                    
+                                                    {% else %}
+                                                    <div class='alert alert-success' dir="ltr"  >
+                                                    {%endif%}
+                                                    {{message}}
+                                                    </div>
+                                              {% endfor %}
+                                            {% endif %}
+                                        </div> 
+                                             
+                                              
+                                             <h4 class="" style="text-align:center;margin-bottom: 4%;" id="sabth_controller_label">ثبت کنترولر</h4>
+                                             <form action="/admin/hawala/controller/save/" method="POST" id="form" enctype="multipart/form-data">
+
+                                                 {% csrf_token %}
+                                                 <input type="hidden" name="update_id" value={{update_id}}>
+                                             <div class="col-lg-6" style="float: left;" id="hawala_no_div">
+                                                 <div class="form-group">
+                                                     <label id="takhalus_label">تخلص</label>
+                                                     <input value="{{controller_obj.user.last_name}}" type="text" tabindex="2" class="form-control" required=""  list="last_name" id="last_name" value="" required="" name="last_name">
+                                                 </div>
+        
+  
+                                                 
+                                                 <div class="form-group">
+                                                    <label id="qadam_label">قدم </label>
+                                                    <div>
+                                                        <input type='text' value="{{controller_obj.qadam}}" required class="form-control" tabindex="4" name="qadam">                 
+                                                        
+                                                    </div>
+                                                </div>
+                                                 
+                                                <div class="form-group">
+                                                    <label id="wazeefa_label">وظیفه</label>
+                                                    <div>
+                                                   <input type="text" value="{{controller_obj.wazeefa}}" name="wazeefa" tabindex="6"  required id="wazeefa">
+                                                    </div>
+                                                </div>
+                                         
+                                                <div class="form-group">
+                                                    <label id="tazkira_label">  نمبر تذکره   </label> 
+                                                    <div>
+                                                        <input data-parsley-type="alphanum" value="{{controller_obj.id_card}}"  tabindex="8" name="id_card" id="id_card" type="text" class="form-control" required="" placeholder="">
+                                                    </div>
+                                                </div>
+                                                 
+                                                 
+                                              
+                                                <div class="form-group">   
+                                                    <label id="shumara_thamas_label">شماره تماس</label>
+                                                <div>          
+                                                    <input type="number" tabindex="10" class="form-control" value="{{controller_obj.mobile}}" name="mobile" required id="mobile" style="width:100%; float:left;">                                   
+                                                </div>          
+                                                </div>
+                                                                 
+                                                
+ 
+                                                <div class="form-group">
+                                                    <label style="margin-top:3%;" >ایمیل</label>
+                                                    <div>
+                                                        <input data-parsley-type="alphanum" tabindex="12" type="text" value="{{controller_obj.user.email}}" class="form-control" required="" placeholder="" name="email">                                                          
+                                                    </div>
+                                                </div>
+            
+                                             </div> <!-- end col -->
+                                             
+                                             <div class="col-lg-6 ">
+                                                 <div class="form-group">
+                                                     <label id="ism_label">اسم </label>
+                                                     <input type="text" autofocus tabindex="1" class="form-control" required="" placeholder="" value="{{controller_obj.user.first_name}}" name="first_name">
+                                                 </div>
+ 
+                                                 <div class="form-group">
+                                                 <label id="walad_label">ولد/بنت</label>
+                                                     <div>
+                                                     <input tabindex="3"  placeholder="" id="father_name" value="{{controller_obj.father_name}}"  name="father_name">                                                  
+                                                     </div>
+                                                 </div>
+                                                 
+                                                 <div class="form-group">
+                                                    <label id="basth_label">بست</label>
+                                                        <div>
+                                                        <input data-parsley-type="alphanum" min="1" value="{{controller_obj.basth}}" max="6" tabindex="5" type="text" class="form-control" required id="basth" name="basth" placeholder="">
+                                                        </div>
+                                                 </div>
+                                            
+                                                
+                                                 <div class="form-group">
+                                                    <label id="shumara_p2_label">شماره پ ۲</label>
+                                                        <div>
+                                                        <input placeholder="" tabindex="7" id="pdo" name="pdo" value="{{controller_obj.pdo}}">                                                  
+                                                        </div>
+                                                 </div>
+ 
+                                                 <input type="hidden" id="dob_for_updation"  value="{{controller_obj.dob}}">
+                                                 <div class="form-group">
+                                                    <label id="tharikh_tawalaud_label">تاریخ تولد </label> 
+                                                    {{form.dob}}
+                                                </div>
+                                                
+                                                <div  class="form-group">     
+                                                    <label style="margin-top: 0%;" id="shumara_aqarib_label">شماره تماس اقارب</label>
+                                                   <div>      
+                                                       <input type="number" tabindex="11" class="form-control" required="" value="{{controller_obj.mobile_aqarib}}" name="mobile_aqarib" id="mobile_aqarib">                                                                                                        
+                                                   </div>      
+                                                </div>
+                                                 
+                                             </div> 
+ 
+ 
+ 
+ 
+                                             <div class="col-lg-6" style="float:right">
+                                                <div class="form-group">
+                                                    <label id="skoonath_asli_label">سکونت اصلی</label>
+                                                    <div>
+                                                        <input type="text" tabindex="13" name="skoonath_asli" id="skoonath_asli" value="{{controller_obj.skoonath_asli}}" required>
+                                                    </div>
+                                                </div>  
+ 
+                                                 <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label>گروپ</label>
+                                                        <select class="form-control selectpicker" tabindex="15" name="group" id="group" value="{{controller_obj.group}}" data-live-search="true">
+                                                        {% for g in groups %}  
+                                                            {% if g != 'controller_user' %}
+                                                        <option> {{g}}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        </select>
+                                                    </div>       
+                                                 </div> 
+                                                 
+                                                 <div class="form-group">
+                                                    <label id="password_label"> پاسورد</label>
+                                                    <div>
+                                                        <input type="text" tabindex="13" name="password" id="password" value="{{controller_obj.password}}" required>
+                                                    </div>
+                                                </div> 
+                                                
+                                                
+                                                <div class="form-group">
+                                                    <label id="password_label"> Photo</label>
+                                                    <div>
+                                                        <input type="file" tabindex="13" name="photo" id="photo" required>
+                                                    </div>
+                                                </div> 
+                                               
+                                             </div>
+ 
+                                             <div class="col-lg-6" style="float:right">         
+                                                 
+                                                <div class="form-group">
+                                                    <label  id="skoonath_filee_label">سکونت فعلي</label>
+                                                    <div> 
+                                                       <input type="text" tabindex="14" value="{{controller_obj.skoonath_filee}}" name="skoonath_filee" required id="skoonath_filee">
+                                                    </div>
+                                                </div>
+ 
+                                                <div class="form-group">
+                                                    <label >مدیریت</label>
+                                                    <div>
+                                                        <select class="form-control selectpicker" tabindex="16" name="mudeeriath" id="mudeeriath" value="{{controller_obj.mudeeriath}}" data-live-search="true">
+                                                        {% for u in mudeeriaths %}     
+                                                            {% comment %} {% if u.username != 'admin' %} {% endcomment %}
+                                                            {% if u == mud_of_cont_to_be_update %}
+                                                            <option selected> {{u}}</option>
+                                                                {% else %}
+                                                                    <option> {{u}}</option>
+                                                                {% endif%}
+                                                            {% comment %} {% endif %} {% endcomment %}
+                                                        {% endfor %}
+                                                        </select> 
+                                                    </div>
+                                                </div>
+
+                                               
+                                                  
+
+                                                    <div class="form-group">
+                                                        <label  id="username_label"> یوزر کاربر</label>
+                                                        <div> 
+                                                           <input type="text" tabindex="14" value="{{controller_obj.user.username}}" name="username" required id="username">
+                                                        </div>
+                                                    </div>
+                                                
+                                             </div>
+ 
+                                             <div class="col-lg-12" style="float:right">
+                                             <div class="form-group m-b-0" style="margin-top:30px">
+                                                 <div>
+                                                    
+                                                     
+                                                     <button type="reset" class="btn btn-secondary waves-effect m-l-5" id="laghwa_label">
+                                                         لغو
+                                                     </button>
+                                                     
+                                                     <button type="submit" tabindex="15" id="irsal_label" class="btn btn-primary waves-effect waves-light">
+                                                        ارسال
+                                                    </button>
+                                                   </form>
+                                                     <a href="/admin/hawala/controller/" id="thafseel_label" class="btn btn-secondary waves-effect m-l-5-right" style='margin-left:1%'>
+                                                       <!---<i class="fa fa-plus-circle"></i> &nbsp; تفصیل --> 
+                                                       تفصیل
+                                                    </a> 
+                                                 </div>
+                                             </div> 
+                                         </div>
+                                            
+                   
+                                             
+                 
+                                         </div>
+                                     </div>
+                                 </div> <!-- end col -->
+                             <div class="col-lg-2"></div>
+                                 
+                             </div> <!-- end row -->            
+ 
+                         </div><!-- container fluid --> 
+ 
+                     </div> <!-- Page content Wrapper -->
+ 
+                 </div> <!-- content -->
+                 
+ 
+                 {% comment %} <footer class="footer">
+                      <span class="d-none d-md-inline-block">   تمام حقوق استفاده با آمریت هماهنګی ومراقبت از کنترولران مقیم واحدهای بودجوي محفوظ میباشد.</span>
+                 </footer> {% endcomment %}
+                 
+             </div>
+             <!-- End Right content here -->
+             
+         </div>
+         
+         <!-- END wrapper -->
+      
+ 
+         
+ 
+ 
+         
+        <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+        <script src="/static/admin/js/django_jalali.min.js"></script>
+        <script src="/static/admin/js/jquery.init.js"></script>
+ 
+         <!-- jQuery  -->
+         <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+         
+         <script src="/static/assets/js/jquery.slimscroll.js"></script>
+ 
+         
+       
+ 
+         <!-- App js -->
+         <script src="/static/assets/js/app.js"></script>
+ 
+        
+     
+ 
+     
+ 
+ <!-- Mirrored from rtl-temp.ir/Theme/Zinzer/vertical-rtl/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:46:16 GMT -->
+ </body></html>
+
+ <script src="/static/assets/js/axios.min.js"></script> 
+ <script>
+
+    id_dob=document.getElementById("id_dob");
+    dob_for_updation=document.getElementById("dob_for_updation");
+    id_dob.value=dob_for_updation.value;
+
+ </script>
+
+
+ <script src="/static/assets/js/language_handling.js"></script>
+ <script>
+    // make_keys(); 
+    //     select_language();
+    //  list_saved_languages(); 
+</script>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html >
+    {% load jalali_tags %}
+{% load static %}
+
+<!-- Mirrored from rtl-temp.ir/Theme/sdfsdfdsfds/vertical-rtl/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:42:14 GMT -->
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title  id="amiriath_nazarath_wa_hamahangi_controlleran_riasath_muhasibath_label2">امریت نظارت وهماهنگی کنترولران ریاست محاسبات</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="ThemeDesign" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+        <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css">
+       
+
+        <link href="/static/admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css" type="text/css" media="all" rel="stylesheet">
+        <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+        <script src="/static/admin/js/django_jalali.min.js"></script>
+        <script src="/static/admin/js/jquery.init.js"></script>
+
+        
+
+
+    
+     
+        <style>
+            input, optgroup, select, textarea {
+                margin: 0;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                display: block;
+                width: 100%;
+                height: calc(1.5em + 0.75rem + 2px);
+            }
+
+          
+            
+          .alert-danger {
+            color: white;
+            background-color: #f24734;
+            font-size: 200%;
+        }
+        .alert-success {
+            color: #18744d;
+            background-color: #cfffea;
+            font-size: 200%;
+        }
+        
+          
+
+            
+        </style>
+    </head>
+    <body class="fixed-left" style="overflow: visible;">
+        <!-- Loader -->
+        <div id="preloader" style="display: none;">
+            <div id="status" style="display: none;">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Begin page -->
+        <div id="wrapper" class="enlarged">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            {% comment %} <div class="left side-menu">
+                <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+                    <i class="mdi mdi-close"></i>
+                </button>
+
+                <div class="left-side-logo d-block d-lg-none">
+                    <div class="text-center">
+                        
+                        <a href="index-2.html" class="logo"><img src="/static/assets/images/logo_dark.png" height="20" alt="logo"></a>
+                    </div>
+                </div>
+
+                <div class="sidebar-inner slimscrollleft">
+                    
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li class="menu-title">اصلی</li>
+
+                            <li>
+                                <a href="/admin_panel/" class="waves-effect">
+                                    <i class="dripicons-home"></i>
+                                    <span> داشبورد <span class="badge badge-success badge-pill float-right">3</span></span>
+                                </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="/admin_panel/" class="waves-effect"><i class="dripicons-briefcase"></i> <span> احصایه<span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="/admin_panel/">ادمین</a>  </li>
+                                    <li><a href="ui-alerts.html"></a>مدیریت کنترول وزارت شهدأ و معلولین</li>
+                                    <li><a href="ui-badge.html"></a>مدیریت کنترول وزارت مالیه</li>
+                                    <li><a href="ui-buttons.html"></a>مدیریت کنترول وزارت شهرسازی</li>
+                                    <li><a href="ui-cards.html"></a>مدیریت کنترول وزارت دفاع</li>
+                                    <li><a href="ui-dropdowns.html"></a>مدیریت کنترول وزارت داخله</li>
+                                    <li><a href="ui-navs.html"></a>مدیریت کنترول شرکت برشنا</li>
+                                    <li><a href="ui-tabs-accordions.html"></a>مدیریت کنترول پوهنتون کابل</li>
+                                    <li><a href="ui-modals.html"></a>مدیریت کنترول ملالی زیژنتون</li>
+                                    
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-archive"></i> <span>  م 16 ها  </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="advanced-alertify.html">مسترد شده ها</a></li>
+                                    <li><a href="advanced-rating.html">ویزه شده ها</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-rocket"></i> <span> ایجاد تغییرات </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                  
+                            </li>
+
+                            <li>
+                                <a href="calendar.html" class="waves-effect"><i class="dripicons-calendar"></i><span> تقویم </span></a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-document"></i><span>کتابخانه</span> <span class="badge badge-warning badge-pill float-right">8</span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="form-elements.html">فرامین</a></li>
+                                    <li><a href="form-validation.html">قوانین </a></li>
+                                    <li><a href="form-advanced.html">مکاتیب </a></li>
+                                    <li><a href="form-editors.html">ویرایشگران فرم</a></li>
+                                    <li><a href="form-uploads.html">متحدالمال ها</a></li>
+                                    <li><a href="form-mask.html">جراید</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-graph-bar"></i><span> نمودار </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="charts-morris.html">نمودار موریس</a></li>
+                                    <li><a href="charts-chartist.html">نمودار چارتیست</a></li>
+                                    <li><a href="charts-chartjs.html">نمودار چارت</a></li>
+                                    <li><a href="charts-flot.html">نمونه فلوت</a></li>
+                                    <li><a href="charts-c3.html">نمودار C3</a></li>
+                                    <li><a href="charts-other.html">نمودار تهیه جی کوئری</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-view-thumb"></i><span> جداول ها </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="tables-basic.html">جداول پایه</a></li>
+                                    <li><a href="tables-datatable.html">جدول داده ها</a></li>
+                                    <li><a href="tables-responsive.html">جدول پاسخگو</a></li>
+                                    <li><a href="tables-editable.html">میز قابل ویرایش</a></li>
+                                </ul>
+                            </li>
+
+
+                          
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-medical"></i><span> ثبت حواله</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div> <!-- end sidebarinner -->
+            </div>            <!-- Left Sidebar End --> {% endcomment %}
+
+            <!-- Start right Content here -->
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+
+                    <!-- Top Bar Start -->
+                    <div class="topbar">
+
+                        <div class="topbar-left	d-none d-lg-block" style="width:20%;color:white">
+                            <div class="text-center">
+                                <a class="logo"  id="amiriath_nazarath_wa_hamahangi_controlleran_riasath_muhasibath_label">امریت نظارت وهماهنگی کنترولران ریاست محاسبات</a>
+                            </div>
+                        </div>
+
+                        <nav class="navbar-custom">
+
+                            <!-- Search input -->
+                            <div class="search-wrap" id="search-wrap">
+                               <div class="search-bar">
+                                   <input class="search-input" type="search" placeholder="جستجو">
+                                   <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+                                       <i class="mdi mdi-close-circle"></i>
+                                   </a>
+                               </div>
+                           </div>
+
+                           <ul class="list-inline float-right mb-0">
+                               <!-- <li class="list-inline-item dropdown notification-list">
+                                 <a
+                                   class="nav-link waves-effect toggle-search"
+                                   href="#"
+                                   data-target="#search-wrap"
+                                 >
+                                   <i class="mdi mdi-magnify noti-icon"></i>
+                                 </a>
+                               </li> -->
+               
+                               <li class="list-inline-item dropdown notification-list">
+                                 <a
+                                   class="nav-link dropdown-toggle arrow-none waves-effect"
+                                   data-toggle="dropdown"
+                                   href="#"
+                                   role="button"
+                                   aria-haspopup="false"
+                                   aria-expanded="false"
+                                 >
+                                   <!-- <i class="mdi mdi-bell-outline noti-icon"></i>
+                                   <span class="badge badge-danger badge-pill noti-icon-badge"
+                                     >3</span
+                                   > -->
+                                 </a>
+                                 <div
+                                   class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg dropdown-menu-animated"
+                                 >
+                                   <!-- item-->
+                                   <div class="dropdown-item noti-title">
+                                     <h5 id="payam_ha_label">پیام ها (۳)</h5>
+                                   </div>
+                                 </div>
+                               </li>
+               
+                               <li
+                                 class="list-inline-item dropdown notification-list nav-user"
+                               >
+                                 <a
+                                   class="nav-link dropdown-toggle arrow-none waves-effect"
+                                   data-toggle="dropdown"
+                                   href="#"
+                                   role="button"
+                                   aria-haspopup="false"
+                                   aria-expanded="false"
+                                 >
+                                   
+                                   <span class="d-none d-md-inline-block ml-1">
+                                     {{user.username}}<i class="mdi mdi-chevron-down"></i
+                                   ></span>
+                                 </a>
+                                 <div
+                                   class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown"
+                                 >
+                                   <a
+                                     class="dropdown-item"
+                                     ><i class="dripicons-user text-muted"></i> پروفایل</a
+                                   >
+                                   <div class="dropdown-divider"></div>
+                                   <a class="dropdown-item" href="/admin/logout/"
+                                     ><i class="dripicons-exit text-muted"></i><span id="khrooj_label"> خروج</span></a
+                                   >
+                                 </div>
+                               </li>
+                             </ul>
+
+                           
+                           <ul class="list-inline menu-left mb-0">
+                               <!-- <li class="list-inline-item">
+                                   <button type="button" class="button-menu-mobile open-left waves-effect">
+                                       <i class="mdi mdi-menu"></i>
+                                   </button>
+                               </li> -->
+                               <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                                   <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span id="zuban_label"> زبان </span><i class="mdi mdi-plus"></i>
+                                         
+                                    </a>
+                                   <div class="dropdown-menu dropdown-menu-animated">
+                                       {% for row in languages %}
+                                        <a class="dropdown-item" href="/language/assign_language/{{row.language}}"><span >  {{row.language}}</span></a>
+                                        {% endfor %}
+                                        {% comment %} <div class="dropdown-divider"></div>
+                                       <a class="dropdown-item" href="#" ><span id="paywand_juda_shuda"> پیوند جدا شده </span></a> {% endcomment %}
+                                    </div>
+                                </li>
+                               
+                               <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                                  <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                  <span id="jalsa"> جلسه </span><i class="mdi mdi-plus"></i>
+                                       {% if num_notifications %}
+                                       <i class="mdi mdi-bell-outline noti-icon"></i>
+                                       <span class="badge badge-danger badge-pill noti-icon-badge">{{num_notifications}}</span>   
+                                       {% endif %}   
+                                   </a>
+                       
+                                  <div class="dropdown-menu dropdown-menu-animated">
+                                   {% if add_jalsa %}   <a class="dropdown-item" href="/admin/hawala/jalsa/add/"> <span id="jalsa_ilan">  اعلان جلسه </span></a> {% endif %}
+                                       <a class="dropdown-item" href="/admin/hawala/jalsa/"><span id="tafseel_jalsa">   تفصیل جلسه    </span></a>
+                             
+                                   </div>
+                               </li>
+
+                               
+                               <li class="list-inline-item notification-list d-none d-sm-inline-block">
+                                   <a href="/admin/hawala/message/" class="nav-link waves-effect">
+                                       <span id="payam_rasan_label">    پیام رسان  </span>
+                                    </a>
+                                    
+                               
+                                    <a href="/haziri/haziri_details/form/" class="nav-link waves-effect">
+                                        <span id="haziri_label">    حاضری  </span>
+                                    </a>
+                                    {% if view_hawala %}
+                                   <a href="/hawala/hawala/" class="nav-link waves-effect">
+                                       <span id="hawala_label">    حواله </span>
+                                    </a>
+                                    {% endif %}
+                                    {% if view_hawala %}
+                                    <a href="/admin/hawala/thadyath/" class="nav-link waves-effect">
+                                       <span id="thadyath_label">    تادیات </span>
+                                    </a>
+                                    {% endif %}
+                                    <a href="/admin/hawala/controller/" class="nav-link waves-effect">
+                                     <span id="controller_label">  کنترولر  </span>
+                                    </a>
+                                   
+                                    <a href="/admin/hawala/mudeeriath/" class="nav-link waves-effect">
+                                       <span id="mudeeriath_label">    مدیریت </span>
+                                    </a>
+                                    {% if view_kitabkhana %}
+
+                                    <a href="/api/kitabkhana/show/" class="nav-link waves-effect">
+                                      <span id="kitabkhana_label">   کتابخانه  </span>
+                                    </a>
+                                    {% endif %}
+                                    {% if user.is_superuser %}
+                                    <a href="/admin" class="nav-link waves-effect">
+                                     <span id="admin_label">  ادمین  </span>
+                                   </a>
+                                    {% endif %}
+                                    {% if view_hawala %}
+                                   <a href="/api/show/" class="nav-link waves-effect">
+                                    <span id="ihsaya_label">   احصایه  </span>
+                                   </a>
+                                   {% endif %}
+                   
+                               </li> 
+
+
+                           </ul> 
+
+
+                       </nav>
+
+                    </div>
+                    <!-- Top Bar End -->
+
+                    <div class="page-content-wrapper ">
+  
+            <div class="container">
+                <div class="row align-items-center">
+                   
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div class="p-2">
+                                    
+                                    
+                                </div>
+                                
+                                <h1 style="text-align:center">ثبت مدیریت </h1>
+                                <div class="p-2">
+                                    <form class="form-horizontal m-t-20" action="/mudeeriath/save/{{mudeeriath.id}}" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <input class="form-control" value="{{mudeeriath.mudeeriath_name}}" name="username" type="text" id="mudeeriath_placeholder_label" required="" placeholder="نام وزارت">
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <input class="form-control"  type="password" name="password1" required="" id="razm_placeholder_label" placeholder="رمز">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"> 
+                                            <div class="col-12">
+                                                <input class="form-control" maxlength="3" value="{{mudeeriath.mudeeriath_code}}" type="text" required="" id="mudeeriath_code_placeholder_label" name="mudeeriath_code" placeholder=" کود مدیریت ۱۲۰،۱۲۴">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"> 
+                                            <div class="col-12">
+                                                <input class="form-control" type="text" required="" value="{{mudeeriath.mudeeriath_contact}}" name="contact_no" id="shumara_thamas_placeholder_label" placeholder="شماره تماس مدیریت">
+                                            </div>
+                                        </div>
+ 
+                                        <div class="form-group row">  
+                                            <div class="col-12"> 
+                                                <input class="form-control" type="text" required="" value="{{mudeeriath.mudeeriath_email}}" name="mudeeriath_email" placeholder="ایمیل">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row"> 
+                                            <div class="col-12">
+                                                <select class="form-control" type="text" required name="group">
+                                                {% for g in groups %}
+                                                    
+                                                    <option>{{g}}</option>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    {% comment %} <label class="custom-control-label" for="customCheck1">مرا به خاطر داشته باش</label> {% endcomment %}
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group text-center row m-t-20">
+                                            <div class="col-12">
+                                                <button class="btn btn-primary btn-block waves-effect waves-light" type="submit"> <span id="irsal_label"> ارسال </span></button>
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group m-t-10 mb-0 row">
+                                            <div class="col-sm-7 m-t-20">
+                                                {% comment %} <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> فراموشی رمز عبور؟</a> {% endcomment %}
+                                            </div>
+                                            <div class="col-sm-5 m-t-20">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+
+
+
+        <!-- jQuery  -->
+        <script src="/static/assets/js/jquery.min.js"></script>
+        <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/assets/js/modernizr.min.js"></script>
+        <script src="/static/assets/js/detect.js"></script>
+        <script src="/static/assets/js/fastclick.js"></script>
+        <script src="/static/assets/js/jquery.slimscroll.js"></script>
+        <script src="/static/assets/js/jquery.blockUI.js"></script>
+        <script src="/static/assets/js/waves.js"></script>
+        <script src="/static/assets/js/jquery.nicescroll.js"></script>
+        <script src="/static/assets/js/jquery.scrollTo.min.js"></script>
+
+        <!-- App js -->
+        <script src="/static/assets/js/app.js"></script>
+        
+        <script src="/static/assets/js/axios.min.js"></script> 
+        <script src="/static/assets/js/language_handling.js"></script>
+
+        <script>
+            //  make_keys(); 
+                {% comment %} select_language(); {% endcomment %}
+            // list_saved_languages(); 
+        </script>
+
+    </body>
+
+
+<!-- Mirrored from rtl-temp.ir/Theme/Zinzer/vertical-rtl/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:46:51 GMT -->
+</html>

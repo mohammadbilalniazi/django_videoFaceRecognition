@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html >
+    {% load jalali_tags %}
+{% load static %}
+
+<!-- Mirrored from rtl-temp.ir/Theme/sdfsdfdsfds/vertical-rtl/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:42:14 GMT -->
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title  id="amiriath_nazarath_wa_hamahangi_controlleran_riasath_muhasibath_label2">امریت نظارت وهماهنگی کنترولران ریاست محاسبات</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="ThemeDesign" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+        <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css">
+       
+
+        <link href="/static/admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css" type="text/css" media="all" rel="stylesheet">
+        <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+        <script src="/static/admin/js/django_jalali.min.js"></script>
+        <script src="/static/admin/js/jquery.init.js"></script>
+
+        
+
+
+    
+     
+        <style>
+            input, optgroup, select, textarea {
+                margin: 0;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                display: block;
+                width: 100%;
+                height: calc(1.5em + 0.75rem + 2px);
+            }
+
+          
+            .alert-danger {
+                color: white;
+                background-color: #f24734;
+                font-size: 200%;
+            }
+            .alert-success {
+                color: #18744d;
+                background-color: #cfffea;
+                font-size: 200%;
+            }
+              
+
+            
+        </style>
+    </head>
+
+    <body class="fixed-left" style="overflow: visible;">
+
+        <!-- Loader -->
+        <div id="preloader" style="display: none;">
+            <div id="status" style="display: none;">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Begin page -->
+        <div id="wrapper" class="enlarged">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            
+            <!-- Left Sidebar End -->
+            <!-- Start right Content here -->
+
+            <div class="content-page" style="margin-right: 0px;">
+                <!-- Start content -->
+                <div class="content">
+
+                    <!-- Top Bar Start -->
+                    <div class="topbar">
+
+                        <div class="topbar-left	d-none d-lg-block" style="width:20%;color:white">
+                            <div class="text-center">
+                                <a class="logo"  id="amiriath_nazarath_wa_hamahangi_controlleran_riasath_muhasibath_label">امریت نظارت وهماهنگی کنترولران ریاست محاسبات</a>
+                            </div>
+                        </div>
+
+                         <nav class="navbar-custom">
+
+                             <!-- Search input -->
+                             <div class="search-wrap" id="search-wrap">
+                                <div class="search-bar">
+                                    <input class="search-input" type="search" placeholder="جستجو">
+                                    <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+                                        <i class="mdi mdi-close-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <ul class="list-inline float-right mb-0">
+                                <!-- <li class="list-inline-item dropdown notification-list">
+                                  <a
+                                    class="nav-link waves-effect toggle-search"
+                                    href="#"
+                                    data-target="#search-wrap"
+                                  >
+                                    <i class="mdi mdi-magnify noti-icon"></i>
+                                  </a>
+                                </li> -->
+                
+                                <li class="list-inline-item dropdown notification-list">
+                                  <a
+                                    class="nav-link dropdown-toggle arrow-none waves-effect"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    role="button"
+                                    aria-haspopup="false"
+                                    aria-expanded="false"
+                                  >
+                                    <!-- <i class="mdi mdi-bell-outline noti-icon"></i>
+                                    <span class="badge badge-danger badge-pill noti-icon-badge"
+                                      >3</span
+                                    > -->
+                                  </a>
+                                  <div
+                                    class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg dropdown-menu-animated"
+                                  >
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                      <h5 id="payam_ha_label">پیام ها (۳)</h5>
+                                    </div>
+                                  </div>
+                                </li>
+                
+                                <li
+                                  class="list-inline-item dropdown notification-list nav-user"
+                                >
+                                  <a
+                                    class="nav-link dropdown-toggle arrow-none waves-effect"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    role="button"
+                                    aria-haspopup="false"
+                                    aria-expanded="false"
+                                  >
+                                    
+                                    <span class="d-none d-md-inline-block ml-1">
+                                      {{user.username}}<i class="mdi mdi-chevron-down"></i
+                                    ></span>
+                                  </a>
+                                  <div
+                                    class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown"
+                                  >
+                                    <a
+                                      class="dropdown-item"
+                                      ><i class="dripicons-user text-muted"></i> پروفایل</a
+                                    >
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/admin/logout/"
+                                      ><i class="dripicons-exit text-muted"></i><span id="khrooj_label"> خروج</span></a
+                                    >
+                                  </div>
+                                </li>
+                              </ul>
+
+                            
+                            <ul class="list-inline menu-left mb-0">
+                                <!-- <li class="list-inline-item">
+                                    <button type="button" class="button-menu-mobile open-left waves-effect">
+                                        <i class="mdi mdi-menu"></i>
+                                    </button>
+                                </li> -->
+                                <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span id="zuban_label"> زبان </span><i class="mdi mdi-plus"></i>
+                                          
+                                     </a>
+                                    <div class="dropdown-menu dropdown-menu-animated">
+                                        {% for row in languages %}
+                                         <a class="dropdown-item" href="/language/assign_language/{{row.language}}"><span >  {{row.language}}</span></a>
+                                         {% endfor %}
+                                         {% comment %} <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#" ><span id="paywand_juda_shuda"> پیوند جدا شده </span></a> {% endcomment %}
+                                     </div>
+                                 </li>
+                                
+                                <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                                   <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span id="jalsa"> جلسه </span><i class="mdi mdi-plus"></i>
+                                        {% if num_notifications %}
+                                        <i class="mdi mdi-bell-outline noti-icon"></i>
+                                        <span class="badge badge-danger badge-pill noti-icon-badge">{{num_notifications}}</span>   
+                                        {% endif %}   
+                                    </a>
+                        
+                                   <div class="dropdown-menu dropdown-menu-animated">
+                                    {% if add_jalsa %}   <a class="dropdown-item" href="/admin/hawala/jalsa/add/"> <span id="jalsa_ilan">  اعلان جلسه </span></a> {% endif %}
+                                        <a class="dropdown-item" href="/admin/hawala/jalsa/"><span id="tafseel_jalsa">   تفصیل جلسه    </span></a>
+                              
+                                    </div>
+                                </li>
+
+                                
+                                <li class="list-inline-item notification-list d-none d-sm-inline-block">
+                                    <a href="/admin/hawala/message/" class="nav-link waves-effect">
+                                        <span id="payam_rasan_label">    پیام رسان  </span>
+                                     </a>
+                                     
+                                
+                                     <a href="/haziri/haziri_details/form/" class="nav-link waves-effect">
+                                         <span id="haziri_label">    حاضری  </span>
+                                     </a>
+                                     {% if view_hawala %}
+                                    <a href="/hawala/hawala/" class="nav-link waves-effect">
+                                        <span id="hawala_label">    حواله </span>
+                                     </a>
+                                     {% endif %}
+                                     {% if view_hawala %}
+                                     <a href="/admin/hawala/thadyath/" class="nav-link waves-effect">
+                                        <span id="thadyath_label">    تادیات </span>
+                                     </a>
+                                     {% endif %}
+                                     <a href="/admin/hawala/controller/" class="nav-link waves-effect">
+                                      <span id="controller_label">  کنترولر  </span>
+                                     </a>
+                                    
+                                     <a href="/admin/hawala/mudeeriath/" class="nav-link waves-effect">
+                                        <span id="mudeeriath_label">    مدیریت </span>
+                                     </a>
+                                     {% if view_kitabkhana %}
+
+                                     <a href="/api/kitabkhana/show/" class="nav-link waves-effect">
+                                       <span id="kitabkhana_label">   کتابخانه  </span>
+                                     </a>
+                                     {% endif %}
+                                     {% if user.is_superuser %}
+                                     <a href="/admin" class="nav-link waves-effect">
+                                      <span id="admin_label">  ادمین  </span>
+                                    </a>
+                                     {% endif %}
+                                     {% if view_hawala %}
+                                    <a href="/api/show/" class="nav-link waves-effect">
+                                     <span id="ihsaya_label">   احصایه  </span>
+                                    </a>
+                                    {% endif %}
+                    
+                                </li> 
+ 
+
+                            </ul> 
+
+
+                        </nav>
+
+                    </div>
+                    <!-- Top Bar End -->
+
+                    <div class="page-content-wrapper ">
+
+                        <div class="container-fluid">
+
+                            <br> 
+                             <!-- end page title -->
+  
+                             <div class="col-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header" style="background-color:white">
+                <h4 class="card-title">مدیریت</h4>
+                <div class="card-tools form-inline">
+                    {% if add_mudeeriath %}
+                    <a href="/admin/hawala/mudeeriath/add/" class="btn btn-outline-success float-left">
+                        <i class="fa fa-plus-circle"></i> &nbsp; <span id="izafa_kardan_mudeeriath_label"> اضافه کردن مدیریت</span>
+                    </a>  
+                    {% endif %}
+           </div>
+            </div>
+
+            <div class="card-body" style="background-color:white">
+                <form id="changelist-form" method="post" novalidate="">
+
+                    <div id="content-main">
+                        
+                        <div class="module" id="changelist">
+                        <div class="row">
+                            <div class="col-12">
+                                
+
+                                
+                                    <div class="row">
+                                        <div class="col-12 col-sm-8">
+
+                                            <div>
+                                                {% if messages %}
+                                                  {% for message in messages %}
+                                                        {% if message.tags == "error" %}
+                                                            <div class='alert alert-danger alert-dismissible'>
+                                                        
+                                                        {% else %}
+                                                        <div class='alert alert-success alert-dismissible' dir="ltr"  >
+                                                        {%endif%}
+                                                        <i class="icon fa fa-check"></i>
+                                                        {{message}}
+                                                        </div>
+                                                  {% endfor %}
+                                                {% endif %}
+                                            </div> 
+                                                 
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    
+
+
+
+
+    <div class="card">
+        <div class="card-body table-responsive p-0">
+            <table id="result_list" class="table table-striped">
+                <thead>
+                    <tr>
+                        
+                         
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" >                          
+                            مدیریت            
+                        </th> 
+                      
+                    
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" id="code_mudeeriath"> 
+                            کود مدیریت              
+                        </th>    
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" id="shumara_thamas_mudeeriath_label">  
+                            شماره تماس                           
+                        </th>       
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">   
+                            کنترولر                           
+                        </th>      
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">  
+                            ایمیل                           
+                        </th>              
+                        <th class="" tabindex="0" rowspan="1" colspan="1" id="amal_label">     
+                              عمل     
+                        </th> 
+                         
+                    </tr> 
+                </thead>
+                <tbody>
+                    
+                    {% for row in mudeeriaths %}
+                    <tr role="row" class="even">
+                        
+                        <th class="field-mudeeriath_name">{{row.mudeeriath_name}}</th>
+                        <td class="field-mudeeriath_code">{{row.mudeeriath_code}}</td>
+                        <td class="field-mudeeriath_contact"> {{row.mudeeriath_contact}}</td>
+         
+                        <td class="field-controllers">
+                            <select>
+                            {% for cont in row.controller_set.all  %}
+                           <option> {{cont.user.first_name}} </option>
+                            {% endfor %}  
+                            </select>
+                        </td>
+                        <td class="field-mudeeriath_email">{{row.mudeeriath_email}}</td>           
+                        <td class="field-actions"> {% if delete_mudeeriath %} <a  class="btn btn-danger" role="button"  href="/mudeeriath/delete/{{ row.id|stringformat:'i' }}">Delete</a>  {% endif %} {% if change_mudeeriath %}<a href="/admin/hawala/mudeeriath/add/{{row.id}}" class="btn btn-info" role="button"> update </a> {% endif %} </td>
+                    </tr>
+
+                    
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+                                    
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+
+
+<div class="col-5">
+    <div class="dataTables_info" role="status" aria-live="polite">
+        
+    </div>
+</div>
+
+<div class="col-7">
+    <ul class="pagination pagination-sm m-0 float-right">
+        
+    </ul>
+</div>
+
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <br class="clear">
+    </div><!-- container fluid --> 
+ 
+                     </div> <!-- Page content Wrapper -->
+ 
+                 </div> <!-- content -->
+                 
+ 
+                 {% comment %} <footer class="footer">
+                      <span class="d-none d-md-inline-block" id="thamam_huqooq_isthifada_ba_amiriath_hamahangi_wa_mura_az_cont_muqi_wahidhaiboodijawimahfoozmibashad">   تمام حقوق استفاده با آمریت هماهنګی ومراقبت از کنترولران مقیم واحدهای بودجوي محفوظ میباشد.</span>
+                 </footer> {% endcomment %}
+                 
+             </div>
+             <!-- End Right content here -->
+             
+         </div>
+         
+         <!-- END wrapper -->
+      
+ 
+ 
+         <!-- jQuery  -->
+         <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+         <script src="/static/assets/js/jquery.slimscroll.js"></script>
+         <!-- App js -->
+         <script src="/static/assets/js/app.js"></script>       
+        <script src="/static/assets/js/axios.min.js"></script> 
+        <script src="/static/assets/js/language_handling.js"></script>
+        <script>
+            // make_keys(); 
+                {% comment %} select_language(); {% endcomment %}
+            //  list_saved_languages();
+        </script>
+        
+     
+ 
+     
+ 
+ <!-- Mirrored from rtl-temp.ir/Theme/Zinzer/vertical-rtl/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:46:16 GMT -->
+ </div></body>

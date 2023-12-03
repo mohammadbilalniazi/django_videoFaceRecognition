@@ -1,0 +1,195 @@
+<nav class="navbar-custom">
+
+    <!-- Search input -->
+    <div class="search-wrap" id="search-wrap">
+       <div class="search-bar">
+           <input class="search-input" type="search" placeholder="جستجو">
+           <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+               <i class="mdi mdi-close-circle"></i>
+           </a>
+       </div>
+   </div>
+
+   <ul class="list-inline float-right mb-0">
+       <!-- <li class="list-inline-item dropdown notification-list">
+           <a class="nav-link waves-effect toggle-search" href="#" data-target="#search-wrap">
+               <i class="mdi mdi-magnify noti-icon"></i>
+           </a>
+       </li> -->
+
+       <li class="list-inline-item dropdown notification-list">
+           <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+               <!-- <i class="mdi mdi-bell-outline noti-icon"></i>
+               <span class="badge badge-danger badge-pill noti-icon-badge">3</span> -->
+           </a>
+           <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg dropdown-menu-animated">
+               <!-- item-->
+               <div class="dropdown-item noti-title">
+                   <h5 id="payam_ha_label">پیام ها (۳)</h5>
+               </div>
+
+               
+               
+
+           </div>
+       </li>
+
+
+       <li class="list-inline-item dropdown notification-list nav-user">
+           <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+               
+               <span class="d-none d-md-inline-block ml-1"> {{user.username}}<i class="mdi mdi-chevron-down"></i></span>
+           </a>
+           <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+               <a class="dropdown-item" href=""><i class="dripicons-user text-muted"></i> پروفایل</a>
+               <!-- <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted"></i> کیف پول من</a>
+               <a class="dropdown-item" href="#"><span class="badge badge-success float-right m-t-5">5</span><i class="dripicons-gear text-muted"></i> تنظیمات</a>
+               <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted"></i> قفل صفحه</a> -->
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="/admin/logout/"><i class="dripicons-exit text-muted"></i><span id="khrooj_label"> خروج</span></a>
+           </div>
+       </li>
+
+   </ul>
+
+  
+   <ul class="list-inline menu-left mb-0">
+       <!-- <li class="list-inline-item">
+           <button type="button" class="button-menu-mobile open-left waves-effect">
+               <i class="mdi mdi-menu"></i>
+           </button>
+       </li> -->
+       <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+           <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+           <span id="zuban_label"> زبان </span><i class="mdi mdi-plus"></i>
+                 
+            </a>
+           <div class="dropdown-menu dropdown-menu-animated">
+               {% for row in languages %}
+                <a class="dropdown-item" href="/configuration/language/assign_language/{{row.language}}"><span >  {{row.language}}</span></a>
+                {% endfor %}
+                {% comment %} <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="#" ><span id="paywand_juda_shuda"> پیوند جدا شده </span></a> {% endcomment %}
+            </div>
+        </li>
+       
+       <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+          <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+          <span id="jalsa"> جلسه </span><i class="mdi mdi-plus"></i>
+               {% if num_notifications %}
+               <i class="mdi mdi-bell-outline noti-icon"></i>
+               <span class="badge badge-danger badge-pill noti-icon-badge">{{num_notifications}}</span>   
+               {% endif %}   
+           </a>
+
+          <div class="dropdown-menu dropdown-menu-animated">
+           {% if add_jalsa %}   <a class="dropdown-item" href="/admin/hawala/jalsa/add/"> <span id="jalsa_ilan">  اعلان جلسه </span></a> {% endif %}
+               <a class="dropdown-item" href="/admin/hawala/jalsa/"><span id="tafseel_jalsa">   تفصیل جلسه    </span></a>
+     
+           </div>
+       </li>
+
+       
+       <li class="list-inline-item notification-list d-none d-sm-inline-block">
+           <a href="/admin/hawala/message/" class="nav-link waves-effect">
+               <span id="payam_rasan_label">    پیام رسان  </span>
+            </a>
+            
+          
+            {% comment %} <a href="/haziri/haziri_details/form/" class="nav-link waves-effect">
+                <span id="haziri_label">    حاضری  </span>
+            </a>  {% endcomment %}
+            <!-- {% if view_hawala %}
+           <a href="/hawala/hawala/" class="nav-link waves-effect">
+               <span id="hawala_label">    حواله </span>
+            </a>
+            {% endif %} -->
+
+            <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span id="jalsa"> حاضری </span><i class="mdi mdi-plus"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-animated">
+                <a class="dropdown-item" href="/haziri/daily_haziri/form/"> <span id=""> <i class="fa fa-plus-circle"></i>    روزانه حاضری </span></a> 
+                 <a class="dropdown-item" href="/haziri/haziri_details/form/"><span id="">   تفصیل حاضری    </span></a> 
+                 </div>
+             </li>
+
+            <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <span id="jalsa"> حواله </span><i class="mdi mdi-plus"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-animated">
+                 {% if add_hawala %}   <a class="dropdown-item" href="/hawala/hawala/add/"> <span id="thadyath_label"> <i class="fa fa-plus-circle"></i>  اضافه کردن حواله </span></a> {% endif %}
+                 {% if view_hawala %}  <a class="dropdown-item" href="/hawala/hawala/"><span id="tafseel_jalsa">   تفصیل حواله    </span></a> {% endif %}
+                 </div>
+             </li>
+             
+             <!-- <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">
+          
+           </li> -->
+           <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+               <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                   <span id="jalsa"> تادیات </span><i class="mdi mdi-plus"></i>
+               </a>
+               <div class="dropdown-menu dropdown-menu-animated">
+                {% if add_thadyath %}   <a class="dropdown-item" href="/admin/hawala/thadyath/add"> <span id="thadyath_label"> <i class="fa fa-plus-circle"></i>  اضافه کردن تادیات </span></a> {% endif %}
+                {% if view_thadyath %}  <a class="dropdown-item" href="/admin/hawala/thadyath/"><span id="tafseel_jalsa">   تفصیل تادیات    </span></a> {% endif %}
+                </div>
+            </li>       
+
+                                
+            <li class="list-inline-item notification-list d-none d-sm-inline-block">
+            {% if view_controller %}
+            <a href="/admin/hawala/controller/" class="nav-link waves-effect">
+             <span id="controller_label">  کنترولر  </span>
+            </a>
+            {% endif %}
+            {% if view_mudeeriath %}
+            <a href="/admin/hawala/mudeeriath/" class="nav-link waves-effect">
+               <span id="mudeeriath_label">    مدیریت </span>
+            </a>
+            {% endif %}
+
+           </li>
+
+           <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+               <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                   <span id="jalsa"> کتابخانه </span><i class="mdi mdi-plus"></i>
+               </a>
+               <div class="dropdown-menu dropdown-menu-animated">
+                {% if add_kitabkhana %}   <a class="dropdown-item" href="/admin/kitabkhana/kitabkhana/add/"> <span id="thadyath_label"> <i class="fa fa-plus-circle"></i>  اضافه کردن کتابخانه </span></a> {% endif %}
+                {% if view_kitabkhana %}  <a class="dropdown-item" href="/kitabkhana/Search/show/"><span id="tafseel_jalsa">   تفصیل کتابخانه    </span></a> {% endif %}
+                </div>
+            </li>
+            
+            <li class="list-inline-item dropdown notification-list d-none d-sm-inline-block">  
+
+
+            {% if user.is_superuser %}
+            <a href="/admin" class="nav-link waves-effect">
+             <span id="admin_label">  ادمین  </span>
+           </a>
+            {% endif %}
+            {% if view_hawala %}
+           <a href="/hawala/ihsaya/Search/" class="nav-link waves-effect">
+            <span id="ihsaya_label">   احصایه  </span>
+           </a>
+           {% endif %}
+           <a  class="nav-link waves-effect" style="">
+               <select style="width:100%">
+                   {% for current_date in current_dates%}  
+                   <option >{{current_date.date}} = {{current_date.type}} </option>
+                   {% endfor %}
+               </select> 
+           
+           </a>
+            
+
+       </li> 
+
+
+   </ul>  
+
+
+</nav>

@@ -1,0 +1,63 @@
+/* Google Font Import - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("/static/img/background.svg");
+    width: 100%;
+    height: 100%;
+
+    transition: var(--tran-05);
+}
+
+.Drop2 {
+    transition: box-shadow 0.3s;
+    padding: 18px;
+    width: 60%;
+    /* height: 250px; */
+    -webkit-box-shadow: 3px 6px 16px -1px rgba(0, 0, 0, 0.76);
+    box-shadow: 3px 6px 16px -1px rgba(0, 0, 0, 0.76);
+    /* box-shadow: 10px 10px 0px grey, 0 0 10px grey; */
+    border-radius: 10px;
+
+    background: #f4f5f7;
+    margin-left: 18%;
+}
+
+.Drop2:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+/* .drop {
+  width: 150px;
+  height: 25px;
+  border: 2px solid;
+  margin-top: 20px;
+} */
+
+.btn-light {
+    color: #fff;
+    background-color: #c0c0c0 !important;
+    border-color: #1861ac;
+}
+
+/* style="background-color: 	#C0C0C0" */
+/* webkit solution */
+::-webkit-input-placeholder {
+    text-align: right;
+}
+
+/* mozilla solution */
+input:-moz-placeholder {
+    text-align: right;
+}

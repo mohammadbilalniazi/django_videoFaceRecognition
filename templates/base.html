@@ -1,0 +1,19 @@
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" >
+    <script src="{% static 'axios.min.js' %}"></script>
+    <script src="{% static 'jquery.min.js' %} %}"></script>
+    <script src="{% static 'bootstrap.min.js' %} %}"></script>
+    {% block scripts %} {% endblock scripts %}
+    <title>Face Id</title>
+</head>
+
+<body>
+    <div class="container mt-3">
+    {% block content %}{% endblock content %}
+</body>
+</html>
