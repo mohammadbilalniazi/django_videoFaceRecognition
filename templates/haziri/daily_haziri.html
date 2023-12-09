@@ -65,6 +65,18 @@
         background-color: #cfffea;
         font-size: 200%;
       }
+      .row_images {
+        float: left;
+        width: 10%;
+        padding: 5px;
+      }
+      
+      /* Clearfix (clear floats) */
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
     </style>
   </head>
 
@@ -121,6 +133,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="row_images" >
+                    <div class="column" >
+                      <img src="img_snow.jpg" alt="Snow" style="width:100%">
+                      <img src="img_snow.jpg" alt="Snow" style="width:100%">
+                      <div>1402-03-09</div>
+                    </div>
+                  </div>
             </div>
             
         </div>
