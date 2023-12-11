@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  {% load jalali_tags %} {% load static %}
+
+  <!-- Mirrored from rtl-temp.ir/Theme/sdfsdfdsfds/vertical-rtl/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:42:14 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
+    />
+    <title>امریت نظارت وهماهنگی کنترولران ریاست محاسبات</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="ThemeDesign" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link
+      href="{% static 'assets/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/icons.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'assets/css/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}"
+      type="text/css"
+      media="all"
+      rel="stylesheet"
+    />
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+
+    <style>
+      input,
+      optgroup,
+      select,
+      textarea {
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        display: block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+      }
+
+      .alert-danger {
+        color: white;
+        background-color: #f24734;
+        font-size: 200%;
+      }
+      .alert-success {
+        color: rgb(130 227 130);
+        background-color: #cfffea;
+        font-size: 200%;
+      }
+      .column {
+        float: left;
+        width: 10%;
+        padding: 5px;
+      }
+      
+      /* Clearfix (clear floats) */
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
+  </head>
+
+  <body class="fixed-left" style="overflow: visible">
+    <!-- Loader -->
+    <div id="preloader" style="display: none">
+      <div id="status" style="display: none">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="enlarged">
+      <!-- ========== Left Sidebar Start ========== -->
+
+      <!-- Left Sidebar End -->
+
+      <!-- Start right Content here -->
+
+      <div class="content-page" style="margin-right: 0px">
+        <!-- Start content -->
+        <div class="content">
+          <!-- Top Bar Start -->
+          <div class="topbar">
+            <div class="topbar-left	d-none d-lg-block" style="width:20%;color:white">
+              <div class="text-center">
+                  <a class="logo">امریت نظارت وهماهنگی کنترولران ریاست محاسبات</a>
+              </div>
+          </div>
+ 
+          {% include '../navbar.html' %}
+          {% comment %} {% include '../login.html' %} {% endcomment %}
+          <span style="display:inline;margin-right:1%;margin-left:2%">
+            <select type="text" name="mudeeriath" id="mudeeriath">
+                    {% if request.user.is_superuser %}
+                    <option value="all"> <span id="thamam_mudeeriath"> تمام مدیریت </span></option>
+                    {% endif %}
+                    {% for mudeeriath in mudeeriaths %}
+                        <option value={{mudeeriath.id}}>{{mudeeriath}}</option>
+                    {% endfor %}
+            </select> 
+        </span>
+            <div class='text-center'>
+              <h1>راپور حاضری روزانه</h1>
+
+                <div class="row" >
+                    {% for log in logs %}
+                    <div class="column" >
+                      
+                      <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
+                      <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
+                      <div>{{log.date}}</div>
+                    </div>
+                    {% endfor %}
+
+                  </div>
+            </div>
+            
+        </div>
+        <!-- Top Bar End -->
+
+          <footer class="footer">
+            <span class="d-none d-md-inline-block">
+              تمام حقوق استفاده با آمریت هماهنګی ومراقبت از کنترولران مقیم
+              واحدهای بودجوي محفوظ میباشد.</span
+            >
+          </footer>
+        </div>
+        <!-- End Right content here -->
+      </div>
+
+      <!-- END wrapper -->
+
+      <!-- jQuery  -->
+      <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+      <script src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
+
+      <script src="{% static 'assets/js/axios.min.js' %}"></script> 
+      <script src="{% static 'assets/js/language_handling.js' %}"></script>
+      
+      <script>
+          // {% comment %} make_keys(); {% endcomment %}
+              select_language();
+          // {% comment %} list_saved_languages(); {% endcomment %}
+      </script>
+      <!-- App js -->
+      <script src="{% static 'assets/js/app.js' %}"></script>
+
+      <!-- Mirrored from rtl-temp.ir/Theme/Zinzer/vertical-rtl/form-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Jun 2019 05:46:16 GMT -->
+    </div>
+  </body>
+</html>
+ 
+
+<script>
+  let mudeeriath=document.getElementById("mudeeriath");
+  mudeeriath.addEventListener("change",function(){
+    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+this.value;
+    console.log("id ",this.value," href ");
+
+  })
+</script>

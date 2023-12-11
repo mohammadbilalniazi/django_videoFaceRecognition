@@ -1,7 +1,7 @@
 from this import d
 from django.contrib import admin
 from django.contrib.auth.models import User
-from .models import General_Holidays,Haziri,Haziri_Details,Daily_Haziri
+from .models import General_Holidays,Haziri,Monthly_Haziri,Daily_Haziri
 from django.shortcuts import redirect
 
 
@@ -17,8 +17,8 @@ from django.shortcuts import redirect
 
 admin.site.register(Daily_Haziri)
 admin.site.register(General_Holidays)
-admin.site.register(Haziri_Details)
-class Haziri_Details_Admin(admin.ModelAdmin):
+admin.site.register(Monthly_Haziri)
+class Monthly_Haziri_Admin(admin.ModelAdmin):
     list_display=['user_id','total_present','total_absent','total_leave','status','mudeeriath']#,'get_status'
     def mudeeriath(self,obj):
         return obj.haziri.mudeeriath

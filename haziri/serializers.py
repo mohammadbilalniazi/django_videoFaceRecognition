@@ -3,7 +3,7 @@ from rest_framework import response
 
 from jalali_date import datetime2jalali, date2jalali
 import datetime
-from .models import Haziri,Haziri_Details,Leave,General_Holidays
+from .models import Haziri,Monthly_Haziri,Leave,General_Holidays
 from hawala.models import Controller
 
 class LeaveSerializer(serializers.ModelSerializer): 
@@ -16,15 +16,15 @@ class GeneralHolidaysSerializer(serializers.ModelSerializer):
         model=General_Holidays
         fields=["id","date","holiday","status"]
         
-class Haziri_Details_Serializer(serializers.ModelSerializer):
+class Monthly_Haziri_Serializer(serializers.ModelSerializer):
     class Meta:
-        model=Haziri_Details
+        model=Monthly_Haziri
         # fields='__all__'
         
         fields=["id","user_id","total_present","kaifyath_haziri","total_absent","total_leave","status","total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
 
 class Haziri_Serializer(serializers.ModelSerializer):
-    haziri_details_set = Haziri_Details_Serializer(many=True)
+    haziri_details_set = Monthly_Haziri_Serializer(many=True)
     class Meta:
         model=Haziri
         fields=["id","haziri_details_set","mudeeriath","month","report_date","start_date","end_date","status","created_by"] #month===> kaifyath_haziri
@@ -34,7 +34,7 @@ class Haziri_Serializer(serializers.ModelSerializer):
         haziri = Haziri.objects.create(**validated_data)
         haziri.save()
         for haziri_report in haziri_report_set:
-            h = Haziri_Details.objects.create(haziri=haziri, **haziri_report)
+            h = Monthly_Haziri.objects.create(haziri=haziri, **haziri_report)
             h.save()
         return haziri
 
@@ -119,8 +119,8 @@ class ControllerHaziriSerializer(serializers.ModelSerializer):
     
     def get_haziri_details_status(self,obj):
         # print("#####################self.start###################",self.start_date,"###############end_date############",self.end_date)
-        # self.haziri_detail_query=Haziri_Details.objects.filter(user_id=self.user_obj.id,haziri__start_date__gte=self.start_date,haziri__end_date__lte=self.end_date)
-        self.haziri_detail_query=Haziri_Details.objects.filter(user_id=self.user_obj.id,haziri__month=int(self.month))
+        # self.haziri_detail_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__start_date__gte=self.start_date,haziri__end_date__lte=self.end_date)
+        self.haziri_detail_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__month=int(self.month))
         if self.haziri_detail_query.count()>0:
             self.haziri_detail_obj=self.haziri_detail_query[0]
             self.total_present=self.haziri_detail_obj.total_present

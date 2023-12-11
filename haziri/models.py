@@ -23,10 +23,10 @@ class Haziri(models.Model):
 class Daily_Haziri(models.Model): 
     user=models.ForeignKey(User,on_delete=models.DO_NOTHING)   
     date=models.DateField(default=datetime.strptime(current_shamsi_date(),"%Y-%m-%d"))
-    is_active=models.BooleanField(default=True)
+    is_active=models.BooleanField(default=False)
     class Meta:
         unique_together=("user","date")
-class Haziri_Details(models.Model): 
+class Monthly_Haziri(models.Model): 
     haziri=models.ForeignKey(Haziri,models.CASCADE)
     kaifyath_haziri=models.TextField(null=True,blank=True)
     user_id=models.ForeignKey(User,on_delete=models.DO_NOTHING)

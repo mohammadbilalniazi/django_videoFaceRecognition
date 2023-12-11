@@ -40,7 +40,6 @@ def find_user_view(request):
     # print("decoded_file ",decoded_file)
     contentfile=ContentFile(decoded_file,'upload.png')
     
-
     # res=classify_face(log.photo.path)
     res=classify_face(contentfile) 
     print("res=",res)

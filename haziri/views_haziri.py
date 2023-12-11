@@ -6,13 +6,13 @@ from django.contrib import messages
 from jalali_date import date2jalali,datetime2jalali
 # from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin	
 from django.contrib.auth.decorators import login_required,permission_required
-from .serializers import Haziri_Serializer,Haziri_Details_Serializer,ControllerHaziriSerializer
+from .serializers import Haziri_Serializer,Monthly_Haziri_Serializer,ControllerHaziriSerializer
 from hawala.date_changing import more_days_month_solut,current_shamsi_date
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework import permissions
 
-from .models import Haziri_Details,Haziri
+from .models import Monthly_Haziri,Haziri
 from hawala.models import Mudeeriath,Controller
 from hawala.views_hawala import get_mudeeriath
 from .forms import HaziriForm     
@@ -156,13 +156,12 @@ def haziri_form(request,haziri_id=None):
     template=loader.get_template('haziri/haziri.html') #haziri_temp_8_22.html
     if haziri_id!=None:         #update
         context={
-            'haziri':Haziri_Details.objects.filter(id=int(haziri_id))
+            'haziri':Monthly_Haziri.objects.filter(id=int(haziri_id))
         } 
     context["languages"]=Languages.objects.all().distinct()   
     return HttpResponse(template.render(context,request))
 
 
- 
 # @login_required(login_url='/')
 #@permission_required('hawala.add_kitabkhana',login_url='/admin')
 @api_view(['POST'])
@@ -184,7 +183,7 @@ def form_save(request):
         for dict_haziri_detail in haziri_report_set:
             user_id=dict_haziri_detail['user_id']
             user_id=User.objects.get(id=int(user_id))
-            haziri_detail_query=Haziri_Details.objects.filter(haziri=haziri_obj,user_id=user_id)
+            haziri_detail_query=Monthly_Haziri.objects.filter(haziri=haziri_obj,user_id=user_id)
                     
             print("validated_data=",validated_data)
             print("haziri_report_set=",haziri_report_set)
@@ -210,7 +209,7 @@ def form_save(request):
                     pass
             else:
                 dict_haziri_detail['user_id']=User.objects.get(id=dict_haziri_detail['user_id'])
-                Haziri_Details.objects.create(haziri=haziri_obj,**dict_haziri_detail)
+                Monthly_Haziri.objects.create(haziri=haziri_obj,**dict_haziri_detail)
         
         return Response("haziri_detail_created", status=status.HTTP_201_CREATED)
         #update
@@ -233,10 +232,10 @@ def form_save(request):
 def haziri_show(request,mudeeriath_id=None):
     if request.method=="GET":
         if mudeeriath_id==None: ####################mudeeriath maybe id or name i will check
-            query_set=Haziri_Details.objects.all().order_by('-pk')
+            query_set=Monthly_Haziri.objects.all().order_by('-pk')
         else:
-            query_set=Haziri_Details.objects.filter(mudeeriath=int(mudeeriath_id)).order_by('-pk')
-        serializer=Haziri_Details_Serializer(query_set,many=True) 
+            query_set=Monthly_Haziri.objects.filter(mudeeriath=int(mudeeriath_id)).order_by('-pk')
+        serializer=Monthly_Haziri_Serializer(query_set,many=True) 
         #print("serializer.data user=",serializer.data)
         #return HttpResponse(serializer.data)
         return Response(serializer.data)

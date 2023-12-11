@@ -1,6 +1,6 @@
 from django import forms
 import pytz
-from .models import Haziri,Haziri_Details,Leave
+from .models import Haziri,Monthly_Haziri,Leave
 from datetime import datetime
 from jalali_date import date2jalali
 from jalali_date.widgets import AdminJalaliDateWidget

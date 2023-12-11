@@ -9,4 +9,7 @@ urlpatterns = [
     path('daily_haziri/form/',biometri_haziri.daily_haziri_form),
     path('haziri_details/',views_haziri.form_save),
     path('export_excel/',views_haziri.haziri_export_excel,name="haziri_export_excel"),
+    path('daily_haziri/report/<mudeeriath_id>',biometri_haziri.daily_haziri_report),
+    
+    path('daily_haziri/report',biometri_haziri.daily_haziri_report),
 ]
