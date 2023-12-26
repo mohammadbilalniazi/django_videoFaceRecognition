@@ -142,27 +142,21 @@
                                       
                                       </select>
                                   </div> -->
-                        <span >
-                            <Button type="submit" name="excel_report" class="btn btn-outline-primary float-left">
-                                <i class="fas fa-download"></i> &nbsp; رپورت excel 
-                            </Button>
-                        </span>          
-                        <div style="margin-right:20px;display:inline" id="az_label">از:</div>
+                               
+                        <div style="margin-right:40px;display:inline" id="az_label">ماه:</div>
+                        
                         <div
                           class="col-lg-3"
-                          style="margin: auto"
                           id="start_date_div"
                         >
                           {{form_start_end_date.start_date}}
                         </div>
-                        <div style="display:inline" id="ila_label">الی:</div>
-                        <div
-                          class="col-lg-3"
-                          style="margin: auto"
-                          id="end_date_div"
-                        >
-                          {{form_start_end_date.end_date}}
-                        </div>
+                        <span >
+                          <Button type="submit" name="excel_report" class="btn btn-outline-primary float-left">
+                              <i class="fas fa-download"></i> &nbsp; رپورت excel 
+                          </Button>
+                      </span>   
+
                         <div
                           class="col-lg-3"
                           style="margin: auto"
@@ -170,7 +164,7 @@
                         >
                           <input type="hidden" name="created_by" id="created_by" value="{{user.username}}">
                           <input type="hidden" name="haziri_status" id="haziri_status">
-                          <input type="hidden" name="haziri_details_status" id="haziri_details_status">
+                          <input type="hidden" name="monthly_haziri_status" id="monthly_haziri_status">
                         </div>
                     </form>
                       <!-- 
@@ -345,7 +339,7 @@
                                  
                                  created_by=document.getElementById('created_by').value;
                                  haziri_status=document.getElementById("haziri_status").value;
-                                 haziri_details_status=document.getElementById("haziri_details_status").value;
+                                 monthly_haziri_status=document.getElementById("monthly_haziri_status").value;
 
                                  total_tafrihi=document.getElementsByClassName('total_tafrihi');
                                  total_zaroori=document.getElementsByClassName('total_zaroori');
@@ -361,10 +355,10 @@
                                 //  console.log("user_id.length=",user_id.length)
                                 // postForm={}
                                  //postForm=[]
-                                 haziri_details_list=[]//#################yazrzi format
+                                 monthly_haziri_list=[]//#################yazrzi format
                                  let k=0;
                                  for(let i=0; i<user_id.length; i++){
-                                    obj_dict_haziri_details={'user_id':parseInt(user_id[i].value),"kaifyath_haziri":kaifyath_haziri[i].value,
+                                    obj_dict_monthly_haziri={'user_id':parseInt(user_id[i].value),"kaifyath_haziri":kaifyath_haziri[i].value,
                                     'total_present':parseInt(total_present[i].value),
                                     'total_absent':parseInt(total_absent[i].value),
                                     'total_leave':parseInt(total_leave[i].value),
@@ -377,11 +371,11 @@
 
                                     'status':0};
           
-                                    haziri_details_list.push(obj_dict_haziri_details);
+                                    monthly_haziri_list.push(obj_dict_monthly_haziri);
                                     k=i;
                                 }
                                 
-                                url="/haziri/haziri_details/";
+                                url="/haziri/monthly_haziri/";
                                 end_date=change_date(end_date)
                                 start_date=change_date(start_date) 
                                 report_date=change_date(report_date[0].value)
@@ -390,13 +384,9 @@
                                   "mudeeriath":parseInt(mudeeriath[0].value),
                                   "month":parseInt(month[0].value),
                                   "created_by":created_by,
-                                  "report_date":report_date,
-                                  "start_date":start_date,
-                                  "end_date":end_date,
-                                  //"status":parseInt(haziri_details_status),
-                                 // "haziri_details_set":haziri_details_list                          
+                                  "report_date":report_date,                         
                                  "status":0,
-                                 "haziri_details_set":haziri_details_list
+                                 "monthly_haziri_set":monthly_haziri_list
                                  }
                                  console.log("postForm=",postForm)
                                  //console.log(postForm)
@@ -610,7 +600,7 @@
                                         
                                       </tr>
                                     </thead>
-                                    <tbody id="haziri_details"></tbody>
+                                    <tbody id="monthly_haziri"></tbody>
                                   </table>
                                 </form>
                               </div>

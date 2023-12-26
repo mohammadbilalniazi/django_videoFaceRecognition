@@ -24,13 +24,14 @@ class Monthly_Haziri_Serializer(serializers.ModelSerializer):
         fields=["id","user_id","total_present","kaifyath_haziri","total_absent","total_leave","status","total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
 
 class Haziri_Serializer(serializers.ModelSerializer):
-    haziri_details_set = Monthly_Haziri_Serializer(many=True)
+    monthly_haziri_set = Monthly_Haziri_Serializer(many=True)
     class Meta:
         model=Haziri
-        fields=["id","haziri_details_set","mudeeriath","month","report_date","start_date","end_date","status","created_by"] #month===> kaifyath_haziri
+        fields=["id","monthly_haziri_set","mudeeriath","month","report_date","status","created_by"] #month===> kaifyath_haziri
 
     def create(self, validated_data):
-        haziri_report_set = validated_data.pop('haziri_details_set')
+        haziri_report_set = validated_data.pop('monthly_haziri_set')
+        print("###########validated_data ",validated_data)
         haziri = Haziri.objects.create(**validated_data)
         haziri.save()
         for haziri_report in haziri_report_set:
@@ -61,12 +62,12 @@ class ControllerHaziriSerializer(serializers.ModelSerializer):
     total_hajj=serializers.SerializerMethodField()
 
     haziri_status=serializers.SerializerMethodField()
-    haziri_details_status=serializers.SerializerMethodField()
+    monthly_haziri_status=serializers.SerializerMethodField()
     mudeeriath_name=serializers.SerializerMethodField()
     first_name=serializers.SerializerMethodField()
     class Meta:
         model=Controller
-        fields=['id','first_name','father_name','user_id','user_name','qadam','basth','mudeeriath_id','mudeeriath_name','wazeefa','is_haziri_uploaded','kaifyath_haziri','report_date','haziri_details_status','haziri_status','total_present','total_absent','total_leave','month',"total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
+        fields=['id','first_name','father_name','user_id','user_name','qadam','basth','mudeeriath_id','mudeeriath_name','wazeefa','is_haziri_uploaded','kaifyath_haziri','report_date','monthly_haziri_status','haziri_status','total_present','total_absent','total_leave','month',"total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
     
     def get_user_id(self,obj):
         # self.user_name=obj.first_name+"_"+obj.last_name
@@ -106,34 +107,36 @@ class ControllerHaziriSerializer(serializers.ModelSerializer):
         self.date=datetime.datetime.strptime(self.date,"%Y-%m-%d")
         self.date=date2jalali(self.date)
         self.month=str(self.start_date).split("-")[1]
-        
-        self.haziri_query=Haziri.objects.filter(month=int(self.month),haziri_details__user_id=self.user_obj)
+        self.year=str(self.start_date).split("-")[0]
+        self.haziri_query=Haziri.objects.filter(month=int(self.month),fiscalyear=int(self.year),monthly_haziri__user_id=self.user_obj)
         #self.haziri_query=Haziri.objects.filter(start_date__lte=self.start_date,end_date__gte=self.end_date) # 1401-01-01     1401-01-09
         if self.haziri_query.count()>0:
             self.haziri_obj=self.haziri_query[0]
-            self.kaifyath_haziri=self.haziri_obj.haziri_details_set.all()[0].kaifyath_haziri
+            self.kaifyath_haziri=self.haziri_obj.monthly_haziri_set.all()[0].kaifyath_haziri
+            self.status=self.haziri_obj.status 
             return True
         else:
             self.kaifyath_haziri=""
+            self.status=1 
             return False
     
-    def get_haziri_details_status(self,obj):
+    def get_monthly_haziri_status(self,obj):
         # print("#####################self.start###################",self.start_date,"###############end_date############",self.end_date)
-        # self.haziri_detail_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__start_date__gte=self.start_date,haziri__end_date__lte=self.end_date)
-        self.haziri_detail_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__month=int(self.month))
-        if self.haziri_detail_query.count()>0:
-            self.haziri_detail_obj=self.haziri_detail_query[0]
-            self.total_present=self.haziri_detail_obj.total_present
-            self.total_absent=self.haziri_detail_obj.total_absent
-            self.total_leave=self.haziri_detail_obj.total_leave 
-            self.status=self.haziri_detail_obj.status
+        # self.monthly_haziri_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__start_date__gte=self.start_date,haziri__end_date__lte=self.end_date)
+        self.monthly_haziri_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__month=int(self.month),haziri__fiscalyear=int(self.year))
+        if self.monthly_haziri_query.count()>0:
+            self.monthly_haziri_obj=self.monthly_haziri_query[0]
+            self.total_present=self.monthly_haziri_obj.total_present
+            self.total_absent=self.monthly_haziri_obj.total_absent
+            self.total_leave=self.monthly_haziri_obj.total_leave 
+            self.status=self.monthly_haziri_obj.status
             
             
-            self.total_tafrihi=self.haziri_detail_obj.total_tafrihi
-            self.total_zaroori=self.haziri_detail_obj.total_zaroori
-            self.total_marizi=self.haziri_detail_obj.total_marizi
-            self.total_waladi=self.haziri_detail_obj.total_waladi 
-            self.total_hajj=self.haziri_detail_obj.total_hajj
+            self.total_tafrihi=self.monthly_haziri_obj.total_tafrihi
+            self.total_zaroori=self.monthly_haziri_obj.total_zaroori
+            self.total_marizi=self.monthly_haziri_obj.total_marizi
+            self.total_waladi=self.monthly_haziri_obj.total_waladi 
+            self.total_hajj=self.monthly_haziri_obj.total_hajj
             
         else:
             self.total_present=0
@@ -149,10 +152,6 @@ class ControllerHaziriSerializer(serializers.ModelSerializer):
         return self.status
 
     def get_haziri_status(self,obj):     
-        if self.haziri_query.count()>0:
-            self.status=self.haziri_obj.status 
-        else:
-            self.status=1
         return self.status
     
     def get_kaifyath_haziri(self,obj):

@@ -73,7 +73,7 @@ def haziri_export_excel(request):
         return int((1+num_characters) * 256)
     excel_col=0
     for col_num in range(len(columns)):      
-        if columns[col_num] not in ["user_name","haziri_details_status","haziri_status","user_id","mudeeriath_id","is_haziri_uploaded"]:
+        if columns[col_num] not in ["user_name","monthly_haziri_status","haziri_status","user_id","mudeeriath_id","is_haziri_uploaded"]:
             xpattern = xlwt.Pattern()
             xpattern.pattern = 0x01
             xpattern.pattern_fore_colour =xlwt.Style.colour_map['black']         
@@ -110,7 +110,7 @@ def haziri_export_excel(request):
             else:
                 value=row[key]
                 
-            if key not in ["user_name","haziri_details_status","haziri_status","user_id","mudeeriath_id","is_haziri_uploaded"]:
+            if key not in ["user_name","monthly_haziri_status","haziri_status","user_id","mudeeriath_id","is_haziri_uploaded"]:
                 if key=="is_haziri_uploaded":
                     if value==False:                 
                         xpattern = xlwt.Pattern()
@@ -176,7 +176,7 @@ def form_save(request):
     haziri_query=Haziri.objects.filter(mudeeriath=request.data['mudeeriath'],month=request.data['month'],fiscalyear=int(fiscalyear))
     if haziri_query.count()>0:    
         validated_data=request.data
-        haziri_report_set =validated_data.pop('haziri_details_set') # it is list of dict detail haziri
+        haziri_report_set =validated_data.pop('monthly_haziri_set') # it is list of dict detail haziri
         haziri_obj=haziri_query[0]
         print("haziri_query=",haziri_query)
         # ######################################################Update############################
@@ -214,7 +214,7 @@ def form_save(request):
         return Response("haziri_detail_created", status=status.HTTP_201_CREATED)
         #update
 
-        #print("Haziri_details_set.all() ",haziri_obj.haziri_details_set.all())
+        #print("Haziri_details_set.all() ",haziri_obj.monthly_haziri_set.all())
     # ######################################################New Haziri Creation############################
     serializer=Haziri_Serializer(data=request.data)
     #print("serializer=",serializer)
@@ -245,7 +245,7 @@ def haziri_show(request,mudeeriath_id=None):
 
 
 @api_view(('GET',))
-def controller_haziri(request,mudeeriath_id="all",start_date="1401-01-01",end_date="1401-12-12"):
+def controller_haziri(request,mudeeriath_id="all",start_date="1401-01-01"):
     start_date=more_days_month_solut(start_date)
     # end_date=more_days_month_solut(end_date)
     #return HttpResponse(mudeeriath_id)

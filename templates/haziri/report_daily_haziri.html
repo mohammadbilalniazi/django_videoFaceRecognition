@@ -115,16 +115,56 @@
  
           {% include '../navbar.html' %}
           {% comment %} {% include '../login.html' %} {% endcomment %}
-          <span style="display:inline;margin-right:1%;margin-left:2%">
-            <select type="text" name="mudeeriath" id="mudeeriath">
-                    {% if request.user.is_superuser %}
-                    <option value="all"> <span id="thamam_mudeeriath"> تمام مدیریت </span></option>
-                    {% endif %}
-                    {% for mudeeriath in mudeeriaths %}
-                        <option value={{mudeeriath.id}}>{{mudeeriath}}</option>
-                    {% endfor %}
-            </select> 
-        </span>
+          <div style="float:left;display:block;width:100%">
+            <span style="margin-right:1%;margin-left:2%">
+              <select type="text" name="mudeeriath" id="mudeeriath">
+                      {% comment %} {% if request.user.is_superuser %}
+                      <option value="all"> <span id="thamam_mudeeriath"> تمام مدیریت </span></option>
+                      {% endif %} {% endcomment %}
+                      {% for mudeeriath in mudeeriaths %}
+                          <option   {% if mudeeriath.id == mudeeriath_id %} selected="selected" {% endif %}value={{mudeeriath.id}}>{{mudeeriath}} </option>
+                      {% endfor %}
+              </select> 
+            </span>
+            
+            <span style="margin-right:1%;margin-left:2%">
+              <label>سال</label>
+              <select name="year" id="year" class="form-control">
+                    <option value="1397">1397</option>
+                    <option value="1398">1398</option>
+                    <option value="1399">1399</option>
+                    <option value="1400">1400</option>
+                    <option value="1401">1401</option>
+                    <option value="1402" selected="selected">1402</option>
+                    <option value="1403">1403</option>
+                    <option value="1404">1404</option>
+                    <option value="1405">1405</option>
+                    <option value="1406">1406</option>
+                </select> 
+            </span>
+
+            
+            <span style="margin-right:1%;margin-left:2%">
+              <label>ماه</label>
+              <select name="month" id="month" class="form-control" >
+                {% for m in months %}  
+                    <option{% if m.value == month %} selected="selected" {% endif %}  value={{m.value}} >{{m.label}}</option>
+                {% endfor %}
+                
+              </select> 
+            </span>
+
+            
+            <span style="margin-right:1%;margin-left:2%">
+              <label>Users</label>
+              <select name="user" id="user" class="form-control" >
+                {% for u in users %}  
+                    <option{% if u.id == user %} selected="selected" {% endif %}  value={{u.id}} >{{u.username}}{{user}}</option>
+                {% endfor %}
+                
+              </select> 
+            </span>
+          </div>
             <div class='text-center'>
               <h1>راپور حاضری روزانه</h1>
 
@@ -134,7 +174,7 @@
                       
                       <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
                       <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
-                      <div>{{log.date}}</div>
+                      <div>{{log.date|date:"Y-m-d"}}</div>
                     </div>
                     {% endfor %}
 
@@ -180,9 +220,33 @@
 
 <script>
   let mudeeriath=document.getElementById("mudeeriath");
+  let user=document.getElementById("user");
+  let year=document.getElementById("year");
+  let month=document.getElementById("month");
+  
   mudeeriath.addEventListener("change",function(){
-    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+this.value;
+    if(user.value=="" || user.value == null){
+      user_id=0
+    }
+    else{
+      user_id=user.value
+    }
+    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+mudeeriath.value+"/"+user_id+"/"+year.value+"/"+month.value;
     console.log("id ",this.value," href ");
+  })
 
+  year.addEventListener("change",function(){
+    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+mudeeriath.value+"/"+user.value+"/"+year.value+"/"+month.value;
+    console.log("id ",this.value," href ");
+  })
+
+  month.addEventListener("change",function(){
+    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+mudeeriath.value+"/"+user.value+"/"+year.value+"/"+month.value;
+    console.log("id ",this.value," href ");
+  })
+
+  user.addEventListener("change",function(){
+    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+mudeeriath.value+"/"+user.value+"/"+year.value+"/"+month.value;
+    console.log("id ",this.value," href ");
   })
 </script>

@@ -4,12 +4,15 @@ from datetime import datetime
 from hawala.date_changing import current_shamsi_date 
 
 # Create your models here.
-
+current_date=current_shamsi_date()
 class Log(models.Model):
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE,blank=True,null=True)
     photo=models.ImageField(upload_to='logs')
     is_correct=models.BooleanField(default=False)
-    date=models.DateField(default=datetime.strptime(current_shamsi_date(),"%Y-%m-%d"))
+    date=models.DateField(default=datetime.strptime(current_date,"%Y-%m-%d"))
+    year=models.SmallIntegerField(default=current_date.split('-')[0])
+    month=models.SmallIntegerField(default=current_date.split('-')[1])
+    day=models.SmallIntegerField(default=current_date.split('-')[2])
     created=models.TimeField(auto_now=True)
 
     def __str__(self):

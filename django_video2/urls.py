@@ -38,8 +38,8 @@ urlpatterns = [
 
     path('admin/haziri/haziri/',views_haziri.haziri_form),
     path('admin/haziri/haziri/add/',views_haziri.haziri_form),
-    path('admin/haziri/haziri_details/',views_haziri.haziri_form),
-    path('admin/haziri/haziri_details/add/',views_haziri.haziri_form),
+    path('admin/haziri/monthly_haziri/',views_haziri.haziri_form),
+    path('admin/haziri/monthly_haziri/add/',views_haziri.haziri_form),
     path('haziri/',include('haziri.urls')),
 
     path('mudeeriath/delete/<str:id>',views_mudeeriath.mudeeriath_delete,name='mudeeriath_delete'),

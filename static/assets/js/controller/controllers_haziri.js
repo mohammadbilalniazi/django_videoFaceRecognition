@@ -2,24 +2,24 @@ function controllers_haziri() {
 
     mudeeriaths = document.getElementById("mudeeriath");
     start_date_input = document.getElementById("start_date_input");
-    end_date_input = document.getElementById("end_date_input");
+    // end_date_input = document.getElementById("end_date_input");
 
     mudeeriath_id = mudeeriaths.value;
     start_date_input = start_date_input.value;
-    end_date_input = end_date_input.value;
+    // end_date_input = end_date_input.value;
     console.log("mudeeriaths.value=", mudeeriath_id);
 
-    url = "/haziri/controller/haziri/" + mudeeriath_id + "/" + change_date(start_date_input) + "/" + change_date(end_date_input) + "/";
+    url = "/haziri/controller/haziri/" + mudeeriath_id + "/" + change_date(start_date_input) + "/";
     fetch(url, {
             method: "GET",
             header: { "X-Requested-With": "XMLHttpRequest" },
         })
         .then((response) => response.json())
         .then((data) => {
-            const haziri_details =
-                document.querySelector("#haziri_details");
+            const monthly_haziri =
+                document.querySelector("#monthly_haziri");
             // console.log("data=",data);
-            haziri_details.innerHTML = "";
+            monthly_haziri.innerHTML = "";
             // console.log(data)
             class ControllerHaziri {
                 constructor(
@@ -70,12 +70,10 @@ function controllers_haziri() {
                     let html1 = `<tr role="row" class="even">
                       
                       <th class="field-id">${this.no}</th>
-                      <td class="field-first_name">${this.first_name}</td>    
-                      
+                      <td class="field-first_name">${this.first_name}</td>                
                       <td class="field-first_name">${this.father_name}</td>    
                       <td class="field-basth">${this.basth}</td>
                       <td class="field-wazeefa">${this.wazeefa}</td>
-                      
                       <td class="field-first_name">${this.mudeeriath_name}</td>   
                       
                      
@@ -107,7 +105,7 @@ function controllers_haziri() {
 
                     // mudeeriaths.style.color="white";
                     let html3 = `<td>status</td></tr>`;
-                    haziri_details.insertAdjacentHTML(
+                    monthly_haziri.insertAdjacentHTML(
                         "beforeend",
                         html1 + html2
                     );
@@ -137,7 +135,6 @@ function controllers_haziri() {
                         data[key]["total_present"],
                         data[key]["total_absent"],
                         data[key]["total_leave"],
-
                         data[key]["total_tafrihi"],
                         data[key]["total_zaroori"],
                         data[key]["total_marizi"],
@@ -147,10 +144,10 @@ function controllers_haziri() {
                 );
 
 
-                haziri_details_status = document.getElementById("haziri_details_status");
+                monthly_haziri_status = document.getElementById("monthly_haziri_status");
                 haziri_status = document.getElementById("haziri_status");
                 haziri_status.value = data[key]['haziri_status'];
-                haziri_details_status.value = data[key]['haziri_details_status'];
+                monthly_haziri_status.value = data[key]['monthly_haziri_status'];
             }
             mudeeriaths_list.forEach((mudeeriath) =>
                 mudeeriath.addHtml()
