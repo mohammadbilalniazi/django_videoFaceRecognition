@@ -7,7 +7,7 @@ from django.db.models.signals import pre_save
 from datetime import datetime
 from hawala.date_changing import current_shamsi_date 
 HAZIRI_CHOICES=((0,"Close"),(1,"Open"),(2,"Suspended"))# 0 close 1 open 2 suspended
-TIMES_CHOICES=((1,"ONE"),(2,"TWO"),(3,"THREE"),(4,"FOUR"),(5,"FIVE"))
+TIMES_CHOICES=((1,"ONE_PER_DAY"),(2,"TWO_PER_DAY"),(3,"ONE_PER_WEEK"),(4,"TWO_PER_WEEK"))
 HOLIDAYS_CHOICES=((0,"Close"),(1,"Open"))# 0 close 1 open 2 
 PER_CHOICES=((1,"Per Day"),(2,"Per Week"),(3,"Per Month"))# 0 close 1 open 2 
 
@@ -52,7 +52,7 @@ class Monthly_Haziri(models.Model):
 class HowManyTimeHaziri(models.Model):
     name=models.CharField(max_length=25,null=True)
     times=models.SmallIntegerField(choices=TIMES_CHOICES,default=1)
-    per=models.SmallIntegerField(choices=PER_CHOICES,default=1)
+    # per=models.SmallIntegerField(choices=PER_CHOICES,default=1)
     is_active=models.BooleanField(default=True)
 
 class ValidTimeHaziri(models.Model):
