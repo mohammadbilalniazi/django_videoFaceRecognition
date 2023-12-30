@@ -169,12 +169,23 @@
               <h1>راپور حاضری روزانه</h1>
 
                 <div class="row" >
-                    {% for log in logs %}
+                    {% comment %} {% for log in logs %}
                     <div class="column" >
                       
                       <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
                       <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
                       <div>{{log.date|date:"Y-m-d"}}</div>
+                    </div>
+                    {% endfor %} {% endcomment %}
+
+                    {% for haziri in daily_haziries %}
+                    <div class="column" >
+                      {% for log in haziri.log_set.all %}
+                      <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
+                      {% comment %} <img src="{{log.photo.url}}" alt="Snow" style="width:50%"> {% endcomment %}
+                      <div>{{log.created|time:"a H:i"}}</div>
+                      {% endfor %}
+                      <div>{{haziri.date|date:"Y-m-d"}}</div>
                     </div>
                     {% endfor %}
 

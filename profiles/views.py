@@ -59,17 +59,16 @@ def find_user_view(request):
         # log=Log()
         current=current_shamsi_date()
 
-        
 
-        # daily_haziris=Daily_Haziri.objects.filter(user=user,date=datetime.strptime(current,"%Y-%m-%d"))
+        daily_haziris=Daily_Haziri.objects.filter(user=user,date=datetime.strptime(current,"%Y-%m-%d"))
 
         logs=Log.objects.filter(profile=profile,date=datetime.strptime(current,"%Y-%m-%d"))
+        daily_haziri=Daily_Haziri()
         if len(logs)<times:
             log=Log()
             log.photo=contentfile
             log.profile=profile
-            log.save()
-            daily_haziri=Daily_Haziri()
+            
             daily_haziri.user=user
             message="Thank You"
             ok=True
@@ -79,8 +78,10 @@ def find_user_view(request):
                 # message="Thank You"
             except Exception as e:
                 print("daily haziri ",e)
-                # ok=False
-                # message=str(e)
+                if daily_haziris.count()>0:
+                    daily_haziri=daily_haziris[0]
+            log.daily_haziri=daily_haziri
+            log.save()
         else:
             ok=False
             message="You Have Already Have 2 Times Attendance Today "

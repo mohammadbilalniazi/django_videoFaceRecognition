@@ -30,7 +30,8 @@ class LeaveAdmin(admin.ModelAdmin):
 
 @admin.register(Daily_Haziri)
 class Daily_Haziri_Admin(ModelAdminJalaliMixin,admin.ModelAdmin):
-    list_display=[field.name for field in Daily_Haziri._meta.get_fields()]
+    # list_display=[field.name for field in Daily_Haziri._meta.get_fields()]
+    list_display=['user','date']
 
 admin.site.register(General_Holidays)
 admin.site.register(Monthly_Haziri)

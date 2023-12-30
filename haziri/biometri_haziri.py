@@ -28,32 +28,42 @@ def daily_haziri_report(request,mudeeriath_id=None,user=None,year=None,month=Non
         year=current.split('-')[0]
         month=current.split('-')[1]
         logs=Log.objects.filter(date__range=[initial_date,current_date])
+        daily_haziries=Daily_Haziri.objects.filter(date__range=[initial_date,current_date])
         # print("initial_date,current_date ",logs)
     else:
         logs=Log.objects.filter(year=int(year),month=int(month))
+        initial_date=datetime.strptime(str(year)+"-"+str(month)+"-01",'%Y-%m-%d')
+        last_date=datetime.strptime(str(year)+"-"+str(month)+"-31",'%Y-%m-%d')
+        daily_haziries=Daily_Haziri.objects.filter(date__range=[initial_date,last_date])
         # print("year=int(year),month=int(month) ",logs)
     if mudeeriath_id!=None:  
         logs=logs.filter(profile__user__controller__mudeeriath__id=mudeeriath_id)
-        print("2 mudeeriath_id ",logs)
+        daily_haziries=daily_haziries.filter(user__controller__mudeeriath_id=mudeeriath_id)
+        # print("2 mudeeriath_id ",logs," daily_haziries",daily_haziries)
     else:
         mudeeriath_id=0
-        print("2 mudeeriath_id=0")
+        # print("2 mudeeriath_id=0")
 
     if user!=None:  
         logs=logs.filter(profile__user__id=user)
-        print("3 user!=None ",logs)
+        daily_haziries=daily_haziries.filter(user__id=user)
+        # print("3 user!=None ",logs," daily_haziries",daily_haziries)
+        
     else:
         user=request.user.id
+    print("logs ",logs," daily_haziries",daily_haziries)
     
     mudeeriaths=Mudeeriath.objects.all()
     users=User.objects.filter(Q(mudeeriath__id=mudeeriath_id) | Q(controller__mudeeriath__id=mudeeriath_id))
     months=[{"value":month[0],"label":month[1]} for month in MONTHS]
     # print("logs ",logs," mudeeriaths ",mudeeriaths)
+    # print("daily_haziries.log.set ",daily_haziries[3].log_set.all())
     context['logs']=logs
+    context['daily_haziries']=daily_haziries
     context['mudeeriath_id']=int(mudeeriath_id)
     context['month']=int(month)
     context['year']=year
-    print("users ",users)
+    # print("users ",users)
     context['users']=users
     context['user']=int(user)
     context['months']=months
