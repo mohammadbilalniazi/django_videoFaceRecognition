@@ -1,24 +1,24 @@
 from django.contrib import admin
-from .models import Log
+# from .models import Log
 from django.utils.html import format_html
 
-@admin.register(Log)
-class LogAdmin(admin.ModelAdmin):
-    def show_image(self,obj):
-        if hasattr(obj,'photo'):
+# @admin.register(Log)
+# class LogAdmin(admin.ModelAdmin):
+#     def show_image(self,obj):
+#         if hasattr(obj,'photo'):
 
-            return format_html('<img width="150px" height="150px" src="{}"/> '.format(obj.photo.url))
-        else:
-            return 'no_photo'
+#             return format_html('<img width="150px" height="150px" src="{}"/> '.format(obj.photo.url))
+#         else:
+#             return 'no_photo'
         
-    def show_profile(self,obj):
-        if obj.profile!=None:
-            return obj.profile.user.username
-        else:
-            return "No Profile"
+#     def show_profile(self,obj):
+#         if obj.profile!=None:
+#             return obj.profile.user.username
+#         else:
+#             return "No Profile"
         
-    show_image.short_description='Image'
-    show_profile.short_description='Porfile'
+#     show_image.short_description='Image'
+#     show_profile.short_description='Porfile'
 
-    list_display=('show_profile','date','created','show_image')
+#     list_display=('show_profile','date','created','show_image')
 # Register your models here.

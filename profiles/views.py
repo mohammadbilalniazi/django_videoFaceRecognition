@@ -11,7 +11,7 @@ import base64
 from datetime import datetime
 from django.core.files.base import ContentFile
 from haziri.models import Daily_Haziri,HowManyTimeHaziri
-from logs.models import Log
+from logs.models import FaceLog
 from profiles.models import Profile
 from django.contrib.auth.models import User
 from django.forms.models import model_to_dict
@@ -47,25 +47,27 @@ def find_user_view(request):
     user_query=User.objects.filter(username=res)
     # print("contentfile ",contentfile) #outputs raw content
     print("user_query.exists() ",user_query.exists())
+    # log validation
     howmanytimehaziries=HowManyTimeHaziri.objects.all()
     if len(howmanytimehaziries)>0:
         times=howmanytimehaziries[0].times
     else:
         times=1
+    #########end log validation###########
     
     if user_query.exists():
         user=user_query[0]
         profile=Profile.objects.get(user=user) 
-        # log=Log()
+        log=FaceLog()
         current=current_shamsi_date()
 
 
         daily_haziris=Daily_Haziri.objects.filter(user=user,date=datetime.strptime(current,"%Y-%m-%d"))
 
-        logs=Log.objects.filter(profile=profile,date=datetime.strptime(current,"%Y-%m-%d"))
+        logs=FaceLog.objects.filter(profile=profile,date=datetime.strptime(current,"%Y-%m-%d"))
         daily_haziri=Daily_Haziri()
         if len(logs)<times:
-            log=Log()
+            log=FaceLog()
             log.photo=contentfile
             log.profile=profile
             

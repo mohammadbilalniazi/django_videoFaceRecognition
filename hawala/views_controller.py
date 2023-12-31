@@ -13,7 +13,7 @@ from profiles.models import Profile
 from rest_framework.decorators import api_view
 import json
 from django.http import JsonResponse
-
+from .views_hawala import get_mudeeriath
 @login_required(login_url='/')
 @permission_required('hawala.view_controller',login_url='')
 def controller_show(request,mudeeriath=None):
@@ -63,7 +63,7 @@ def controller_form(request,id=None):
     else: 
         context={
             'groups':Group.objects.filter(name="controllers_sub_users"), 
-            'mudeeriaths':Mudeeriath.objects.filter(mudeeriath_name=request.user.username)
+            'mudeeriaths':get_mudeeriath(request)
         }
         #print(context)
     form=ControllerForm() 

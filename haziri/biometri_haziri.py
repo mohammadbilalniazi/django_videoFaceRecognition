@@ -1,7 +1,7 @@
 from .models import Daily_Haziri
 from django.template import loader
 from django.http import HttpResponse
-from logs.models import Log
+from logs.models import FaceLog
 from hawala.date_changing import current_shamsi_date
 from datetime import datetime
 from hawala.models import Controller,Mudeeriath
@@ -27,11 +27,11 @@ def daily_haziri_report(request,mudeeriath_id=None,user=None,year=None,month=Non
     if year==None or month==None:
         year=current.split('-')[0]
         month=current.split('-')[1]
-        logs=Log.objects.filter(date__range=[initial_date,current_date])
+        logs=FaceLog.objects.filter(date__range=[initial_date,current_date])
         daily_haziries=Daily_Haziri.objects.filter(date__range=[initial_date,current_date])
         # print("initial_date,current_date ",logs)
     else:
-        logs=Log.objects.filter(year=int(year),month=int(month))
+        logs=FaceLog.objects.filter(year=int(year),month=int(month))
         initial_date=datetime.strptime(str(year)+"-"+str(month)+"-01",'%Y-%m-%d')
         last_date=datetime.strptime(str(year)+"-"+str(month)+"-31",'%Y-%m-%d')
         daily_haziries=Daily_Haziri.objects.filter(date__range=[initial_date,last_date])

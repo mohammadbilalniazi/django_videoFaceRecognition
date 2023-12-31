@@ -5,7 +5,7 @@ from hawala.date_changing import current_shamsi_date
 from haziri.models import Daily_Haziri
 # Create your models here.
 current_date=current_shamsi_date()
-class Log(models.Model):
+class FaceLog(models.Model):
     profile=models.ForeignKey(Profile,on_delete=models.CASCADE,blank=True,null=True)
     daily_haziri=models.ForeignKey(Daily_Haziri,on_delete=models.CASCADE,blank=True,null=True)
     photo=models.ImageField(upload_to='logs') 

@@ -67,6 +67,10 @@ if (navigator.mediaDevices.getUserMedia) {
                             message.classList.add('alert', 'alert-danger');
                             message.innerHTML = data.message;
                         }
+                        setTimeout(() => {
+                            message.innerHTML = "";
+                            message.className = "";
+                        }, 2000);
                     });
                 }
             })

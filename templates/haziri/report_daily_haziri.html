@@ -180,7 +180,7 @@
 
                     {% for haziri in daily_haziries %}
                     <div class="column" >
-                      {% for log in haziri.log_set.all %}
+                      {% for log in haziri.facelog_set.all %}
                       <img src="{{log.photo.url}}" alt="Snow" style="width:50%">
                       {% comment %} <img src="{{log.photo.url}}" alt="Snow" style="width:50%"> {% endcomment %}
                       <div>{{log.created|time:"a H:i"}}</div>
