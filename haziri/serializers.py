@@ -28,7 +28,7 @@ class Haziri_Serializer(serializers.ModelSerializer):
     class Meta:
         model=Haziri
         fields=["id","monthly_haziri_set","mudeeriath","month","report_date","status","created_by"] #month===> kaifyath_haziri
-
+    
     def create(self, validated_data):
         haziri_report_set = validated_data.pop('monthly_haziri_set')
         print("###########validated_data ",validated_data)
@@ -37,7 +37,7 @@ class Haziri_Serializer(serializers.ModelSerializer):
         for haziri_report in haziri_report_set:
             h = Monthly_Haziri.objects.create(haziri=haziri, **haziri_report)
             h.save()
-        return haziri
+        return haziri 
 
 
 

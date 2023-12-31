@@ -87,7 +87,6 @@ def haziri_export_excel(request):
             ws.col(excel_col).width=get_width(len(str(columns[col_num]))+10)
             excel_col=excel_col+1
     
-    
     for index in range(len(pure_data)):
         row=pure_data[index]
         # print("len(rows)=",len(row)," row=",row,"\n")
