@@ -188,7 +188,7 @@
                       {% comment %} {% endif %} {% endcomment %}
 
                       <script>
-                        function mudeeriaths_ihasaya(mudeeriath_id = "all") {
+                        {% comment %} function mudeeriaths_ihasaya(mudeeriath_id = "all") {
                           console.log("mudeeriaths.value=", mudeeriath_id);
                           if(mudeeriath_id=="all"){
                             alert("مدیریت را انتخاب کنید");
@@ -277,7 +277,7 @@
                             });
                           //})
                           return;
-                        }
+                        } {% endcomment %}
 
                        // mudeeriaths_ihasaya("all");
 
