@@ -36,6 +36,6 @@ class Daily_Haziri_Admin(ModelAdminJalaliMixin,admin.ModelAdmin):
 admin.site.register(General_Holidays)
 admin.site.register(Monthly_Haziri)
 class Monthly_Haziri_Admin(admin.ModelAdmin):
-    list_display=['user_id','total_present','total_absent','total_leave','status','mudeeriath']#,'get_status'
+    list_display=['user','total_present','total_absent','total_leave','status','mudeeriath']#,'get_status'
     def mudeeriath(self,obj):
         return obj.haziri.mudeeriath

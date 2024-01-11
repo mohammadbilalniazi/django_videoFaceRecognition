@@ -237,12 +237,12 @@
   
   mudeeriath.addEventListener("change",function(){
     if(user.value=="" || user.value == null){
-      user_id=0
+      user=0
     }
     else{
-      user_id=user.value
+      user=user.value
     }
-    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+mudeeriath.value+"/"+user_id+"/"+year.value+"/"+month.value;
+    window.location.href=window.location.origin+"/haziri/daily_haziri/report/"+mudeeriath.value+"/"+user+"/"+year.value+"/"+month.value;
     console.log("id ",this.value," href ");
   })
 

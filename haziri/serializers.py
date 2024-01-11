@@ -9,7 +9,7 @@ from hawala.models import Controller
 class LeaveSerializer(serializers.ModelSerializer): 
     class Meta:
         model=Leave
-        fields=["id","user_id","accepted_by","start_date","reason","status"]
+        fields=["id","user","accepted_by","start_date","reason","status"]
 
 class GeneralHolidaysSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,7 +21,7 @@ class Monthly_Haziri_Serializer(serializers.ModelSerializer):
         model=Monthly_Haziri
         # fields='__all__'
         
-        fields=["id","user_id","total_present","kaifyath_haziri","total_absent","total_leave","status","total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
+        fields=["id","user","total_present","kaifyath_haziri","total_absent","total_leave","status","total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
 
 class Haziri_Serializer(serializers.ModelSerializer):
     monthly_haziri_set = Monthly_Haziri_Serializer(many=True)
@@ -45,7 +45,7 @@ class Haziri_Serializer(serializers.ModelSerializer):
 
 class ControllerHaziriSerializer(serializers.ModelSerializer):
     kaifyath_haziri = serializers.SerializerMethodField()
-    user_id = serializers.SerializerMethodField()
+    user = serializers.SerializerMethodField()
     month=serializers.SerializerMethodField()
     user_name=serializers.SerializerMethodField()
     mudeeriath_id=serializers.SerializerMethodField()
@@ -67,9 +67,9 @@ class ControllerHaziriSerializer(serializers.ModelSerializer):
     first_name=serializers.SerializerMethodField()
     class Meta:
         model=Controller
-        fields=['id','first_name','father_name','user_id','user_name','qadam','basth','mudeeriath_id','mudeeriath_name','wazeefa','is_haziri_uploaded','kaifyath_haziri','report_date','monthly_haziri_status','haziri_status','total_present','total_absent','total_leave','month',"total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
+        fields=['id','first_name','father_name','user','user_name','qadam','basth','mudeeriath_id','mudeeriath_name','wazeefa','is_haziri_uploaded','kaifyath_haziri','report_date','monthly_haziri_status','haziri_status','total_present','total_absent','total_leave','month',"total_tafrihi","total_zaroori","total_marizi","total_waladi","total_hajj"]
     
-    def get_user_id(self,obj):
+    def get_user(self,obj):
         # self.user_name=obj.first_name+"_"+obj.last_name
         
         self.user_name=obj.user.username
@@ -108,7 +108,7 @@ class ControllerHaziriSerializer(serializers.ModelSerializer):
         self.date=date2jalali(self.date)
         self.month=str(self.start_date).split("-")[1]
         self.year=str(self.start_date).split("-")[0]
-        self.haziri_query=Haziri.objects.filter(month=int(self.month),fiscalyear=int(self.year),monthly_haziri__user_id=self.user_obj)
+        self.haziri_query=Haziri.objects.filter(month=int(self.month),fiscalyear=int(self.year),monthly_haziri__user=self.user_obj)
         #self.haziri_query=Haziri.objects.filter(start_date__lte=self.start_date,end_date__gte=self.end_date) # 1401-01-01     1401-01-09
         if self.haziri_query.count()>0:
             self.haziri_obj=self.haziri_query[0]
@@ -122,8 +122,8 @@ class ControllerHaziriSerializer(serializers.ModelSerializer):
     
     def get_monthly_haziri_status(self,obj):
         # print("#####################self.start###################",self.start_date,"###############end_date############",self.end_date)
-        # self.monthly_haziri_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__start_date__gte=self.start_date,haziri__end_date__lte=self.end_date)
-        self.monthly_haziri_query=Monthly_Haziri.objects.filter(user_id=self.user_obj.id,haziri__month=int(self.month),haziri__fiscalyear=int(self.year))
+        # self.monthly_haziri_query=Monthly_Haziri.objects.filter(user=self.user_obj.id,haziri__start_date__gte=self.start_date,haziri__end_date__lte=self.end_date)
+        self.monthly_haziri_query=Monthly_Haziri.objects.filter(user=self.user_obj.id,haziri__month=int(self.month),haziri__fiscalyear=int(self.year))
         if self.monthly_haziri_query.count()>0:
             self.monthly_haziri_obj=self.monthly_haziri_query[0]
             self.total_present=self.monthly_haziri_obj.total_present

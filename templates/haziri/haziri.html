@@ -225,7 +225,7 @@
                                   alert("یک مدیریت انتخاب شود");
                                   return ;
                                  }
-                                 user_id=document.getElementsByClassName('user_id');
+                                 user=document.getElementsByClassName('user');
                                  mudeeriath=document.getElementsByClassName('mudeeriath');
                                  total_present=document.getElementsByClassName('total_present');
                                  total_absent=document.getElementsByClassName('total_absent');
@@ -251,13 +251,13 @@
                                  const formData = new FormData();
                                  //console.log(report_date)
                                  csrf=document.getElementsByName("csrfmiddlewaretoken").value;
-                                //  console.log("user_id.length=",user_id.length)
+                                //  console.log("user.length=",user.length)
                                 // postForm={}
                                  //postForm=[]
                                  monthly_haziri_list=[]//#################yazrzi format
                                  let k=0;
-                                 for(let i=0; i<user_id.length; i++){
-                                    obj_dict_monthly_haziri={'user_id':parseInt(user_id[i].value),"kaifyath_haziri":kaifyath_haziri[i].value,
+                                 for(let i=0; i<user.length; i++){
+                                    obj_dict_monthly_haziri={'user':parseInt(user[i].value),"kaifyath_haziri":kaifyath_haziri[i].value,
                                     'total_present':parseInt(total_present[i].value),
                                     'total_absent':parseInt(total_absent[i].value),
                                     'total_leave':parseInt(total_leave[i].value),

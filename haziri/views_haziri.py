@@ -73,7 +73,7 @@ def haziri_export_excel(request):
         return int((1+num_characters) * 256)
     excel_col=0
     for col_num in range(len(columns)):      
-        if columns[col_num] not in ["user_name","monthly_haziri_status","haziri_status","user_id","mudeeriath_id","is_haziri_uploaded"]:
+        if columns[col_num] not in ["user_name","monthly_haziri_status","haziri_status","user","mudeeriath_id","is_haziri_uploaded"]:
             xpattern = xlwt.Pattern()
             xpattern.pattern = 0x01
             xpattern.pattern_fore_colour =xlwt.Style.colour_map['black']         
@@ -109,7 +109,7 @@ def haziri_export_excel(request):
             else:
                 value=row[key]
                 
-            if key not in ["user_name","monthly_haziri_status","haziri_status","user_id","mudeeriath_id","is_haziri_uploaded"]:
+            if key not in ["user_name","monthly_haziri_status","haziri_status","user","mudeeriath_id","is_haziri_uploaded"]:
                 if key=="is_haziri_uploaded":
                     if value==False:                 
                         xpattern = xlwt.Pattern()
@@ -166,7 +166,7 @@ def haziri_form(request,haziri_id=None):
 @api_view(['POST'])
 def form_save(request): 
     ###############################################branch1###############################
-    #[{'user_id': '10', 'mudeeriath': '4', 'total_present': '1', 'month': '06', 'total_absent': '1', 'total_leave': '1', 'report_date': '1401-06-02'}] lenth 1 request.data[0]['user_id']
+    #[{'user': '10', 'mudeeriath': '4', 'total_present': '1', 'month': '06', 'total_absent': '1', 'total_leave': '1', 'report_date': '1401-06-02'}] lenth 1 request.data[0]['user']
     haziri_report_data=[]
     ################################################### end Branch 1###############
     print("request.data=",request.data," current_shamsi_date() ",current_shamsi_date())
@@ -180,9 +180,9 @@ def form_save(request):
         print("haziri_query=",haziri_query)
         # ######################################################Update############################
         for dict_haziri_detail in haziri_report_set:
-            user_id=dict_haziri_detail['user_id']
-            user_id=User.objects.get(id=int(user_id))
-            haziri_detail_query=Monthly_Haziri.objects.filter(haziri=haziri_obj,user_id=user_id)
+            user=dict_haziri_detail['user']
+            user=User.objects.get(id=int(user))
+            haziri_detail_query=Monthly_Haziri.objects.filter(haziri=haziri_obj,user=user)
                     
             print("validated_data=",validated_data)
             print("haziri_report_set=",haziri_report_set)
@@ -207,7 +207,7 @@ def form_save(request):
                 except Exception as e:
                     pass
             else:
-                dict_haziri_detail['user_id']=User.objects.get(id=dict_haziri_detail['user_id'])
+                dict_haziri_detail['user']=User.objects.get(id=dict_haziri_detail['user'])
                 Monthly_Haziri.objects.create(haziri=haziri_obj,**dict_haziri_detail)
         
         return Response("haziri_detail_created", status=status.HTTP_201_CREATED)

@@ -33,7 +33,7 @@ function controllers_haziri() {
                     kaifyath_haziri,
                     mudeeriath,
                     report_date,
-                    user_id,
+                    user,
                     user_name,
                     wazeefa,
                     month,
@@ -47,7 +47,7 @@ function controllers_haziri() {
                     this.first_name = first_name;
                     this.father_name = father_name;
                     this.mudeeriath_name = mudeeriath_name;
-                    this.user_id = user_id;
+                    this.user = user;
                     this.user_name = user_name;
                     this.mudeeriath = mudeeriath;
                     this.wazeefa = wazeefa;
@@ -74,7 +74,7 @@ function controllers_haziri() {
                       <td class="field-basth">${this.basth}</td>
                       <td class="field-wazeefa">${this.wazeefa}</td>
                       <td class="field-first_name">${this.mudeeriath_name}</td>   
-                          <td class="field-last_name"><input type="hidden" class="user_id" disabled style="font-weight:bolder" value="${this.user_id}" name="user_id"></td>
+                          <td class="field-last_name"><input type="hidden" class="user" disabled style="font-weight:bolder" value="${this.user}" name="user"></td>
                           <td class="field-id_card"><input type="hidden"  name="mudeeriath" disabled style="font-weight:bolder" class="mudeeriath" value="${this.mudeeriath}"></td>
                           <td class="field-pdo"><input type="number" class="total_present" value="${this.total_present}" name="total_present"><input type="hidden"  class="month" value="${this.month}" name="month"></td>
                           <td class="field-pdo"><input type="number"  class="total_absent" value="${this.total_absent}" name="total_absent"></td>
@@ -123,7 +123,7 @@ function controllers_haziri() {
                         data[key]["kaifyath_haziri"],
                         data[key]["mudeeriath_id"],
                         data[key]["report_date"],
-                        data[key]["user_id"],
+                        data[key]["user"],
                         data[key]["user_name"],
                         data[key]["wazeefa"],
                         data[key]["month"],

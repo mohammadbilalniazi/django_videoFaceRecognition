@@ -35,7 +35,7 @@ class Daily_Haziri(models.Model):
 class Monthly_Haziri(models.Model): 
     haziri=models.ForeignKey(Haziri,models.CASCADE)
     kaifyath_haziri=models.TextField(null=True,blank=True)
-    user_id=models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    user=models.ForeignKey(User,on_delete=models.DO_NOTHING)
     total_present=models.SmallIntegerField()
     total_absent=models.SmallIntegerField(default=0)
     total_leave=models.SmallIntegerField(default=0)
