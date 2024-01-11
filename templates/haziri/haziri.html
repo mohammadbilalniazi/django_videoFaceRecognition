@@ -167,13 +167,6 @@
                           <input type="hidden" name="monthly_haziri_status" id="monthly_haziri_status">
                         </div>
                     </form>
-                      <!-- 
-                                <div class="col-lg-5" style="margin:auto;display: inline;" id="start_end_date">
-                                    <span style="display:inline;margin-right:5%">از:</span>
-                                    <span style="display:inline;margin-right:1%;margin-left:2%"> {{form_start_end_date.start_date}} </span>
-                                    <span>تا:</span>
-                                    <span  style="display:inline;margin-left:5%;margin-right:1%"> {{form_start_end_date.end_date}} </span>
-                                </div> -->
                     </div>
                     <div class="card-tools form-inline">
                       {% comment %} {% if add_haziri %} {% endcomment %}
@@ -185,108 +178,14 @@
                         <i class="fa fa-plus-circle"></i> &nbsp;  <span id="irsal_haziri_label">ارسال حاضری</span>
                         
                       </a>
-                      {% comment %} {% endif %} {% endcomment %}
 
                       <script>
-                        {% comment %} function mudeeriaths_ihasaya(mudeeriath_id = "all") {
-                          console.log("mudeeriaths.value=", mudeeriath_id);
-                          if(mudeeriath_id=="all"){
-                            alert("مدیریت را انتخاب کنید");
-                            // return 
-                          }
-                          console.log("called mudeeriaths_ihasaya mudeeriath.value",mudeeriath_id)
-                            mudeeriath_element=document.getElementById("mudeeriath");
-                            console.log("mudeeriath_element=",mudeeriath_element.value);
-                            mudeeriath_id=mudeeriath_element.value;
-                            start_date=document.getElementById("start_date_input").value;
-                             //console.log("start_date=",start_date);
-                            end_date=document.getElementById("end_date_input").value;
-                            
-                            if (mudeeriath_id=="all")
-                            {
-                            url="/mudeeriath/Search";
-                            }
-                            else
-                            {
-                            url="/hawala/mudeeriath/Search/"+mudeeriath_id+"/"+change_date(start_date)+"/"+change_date(end_date)+"/"+controll_status+"/";
-                            }
-                          //url = "/mudeeriath/Search";
-                          fetch(url, {
-                            method: "GET",
-                            header: { "X-Requested-With": "XMLHttpRequest" },
-                          })
-                            .then((response) => response.json())
-                            .then((data) => {
-                              const mudeeriaths_for_ihasayaContainer =document.querySelector("#mudeeriaths");
-                              if (mudeeriath_id == "all") {
-                                mudeeriaths_for_ihasayaContainer.innerHTML = "";
-                              }
-
-                              console.log(data);
-                              class Mudeeriaths {
-                                constructor(
-                                  no,
-                                  id,
-                                  mudeeriath_name,
-                                  mudeeriath_code
-                                ) {
-                                  this.no = no;
-                                  this.id = id;
-                                  this.mudeeriath_name = mudeeriath_name;
-                                  this.mudeeriath_code = mudeeriath_code;
-                                }
-
-                                addHtml() {
-                                  if (mudeeriath_id == "all") {
-                                    // دفعه اولی که تمام مدیریت ها را ما میخواهیم لیست کنیم
-                                    let html = `<option value="${this.id}">${this.mudeeriath_name}</option>`; //beforeend
-                                    mudeeriaths_for_ihasayaContainer.insertAdjacentHTML(
-                                      "beforeend",
-                                      html
-                                    );
-                                  } else {
-                                    //$(`.id_100 option[value=${mudeeriath_id}]`).attr('selected','selected');
-                                    $("#select_id")
-                                      .val(`${mudeeriath_id}`)
-                                      .change();
-                                  }
-                                }
-                              }
-
-                              let mudeeriaths_list = [];
-                              for (key in data) {
-                                mudeeriaths_list.push(
-                                  new Mudeeriaths(
-                                    key,
-                                    data[key]["id"],
-                                    data[key]["mudeeriath_name"],
-                                    data[key]["mudeeriath_code"]
-                                  )
-                                );
-                              }
-                              mudeeriaths_list.forEach((mudeeriath) =>
-                                mudeeriath.addHtml()
-                              );
-                              if (mudeeriath_id == "all") {
-                                $("#mudeeriaths").prepend(
-                                  $(
-                                    `<option value="all" selected>  مدیریت </option>`
-                                  )
-                                );
-                              }
-                            });
-                          //})
-                          return;
-                        } {% endcomment %}
-
-                       // mudeeriaths_ihasaya("all");
+                    
 
                         function change_date(string_date)
                         {
                         var momentDate=moment(string_date);
-                        //return momentDate.calendar();
                         return momentDate.format("YYYY-MM-DD");
-                         //return mydate;
                         }
                       </script>
                       <script src="{% static 'assets/js/moment.js' %}"></script>
