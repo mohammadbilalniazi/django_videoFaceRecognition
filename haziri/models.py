@@ -32,6 +32,8 @@ class Daily_Haziri(models.Model):
         unique_together=("user","date")
     def __str__(self):
         return self.user.username
+PER_CHOICES=((1,"Per Day"),(2,"Per Week"),(3,"Per Month"))# 0 close 1 open 2 
+
 class Monthly_Haziri(models.Model): 
     haziri=models.ForeignKey(Haziri,models.CASCADE)
     kaifyath_haziri=models.TextField(null=True,blank=True)
@@ -49,6 +51,8 @@ class Monthly_Haziri(models.Model):
         verbose_name_plural="تفصیل حاضری"
     #unique_together=("date","holiday")
 
+PRSENT_LEAVE_CHOICES=(("total_present","total_present"),("total_absent","total_absent"),("total_leave","total_leave"),("total_tafrihi","total_tafrihi"),("total_zaroori","total_zaroori"),("total_marizi","total_marizi"),("total_waladi","total_waladi"),("total_hajj","total_hajj"))
+
 class HowManyTimeHaziri(models.Model):
     name=models.CharField(max_length=25,null=True)
     times=models.SmallIntegerField(choices=TIMES_CHOICES,default=1)
@@ -65,7 +69,7 @@ class ValidTimeHaziri(models.Model):
 LEAVE_CHOICES=((0,0),(1,1),(2,2))# 0 rejected 1 accepted 2 pending 
 
 class LeaveType(models.Model):
-    name=models.CharField(max_length=25,null=True)
+    name=models.CharField(choices=PRSENT_LEAVE_CHOICES,null=True)
     duration=models.SmallIntegerField(default=0)
     is_active=models.BooleanField(default=True)
 

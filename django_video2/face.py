@@ -8,21 +8,6 @@ import face_recognition
 def classify_face(img):
     #1 way 
     faces_db=handle_face_db()
-    #2 way
-    # qs=Profile.objects.all()
-    # faces_db={}
-    # for p in qs:
-    #     encoding = None
-    #     face_encodings=encode_face(p.photo.path)
-
-    #     if len(face_encodings)>0:
-    #         encoding=face_encodings[0]
-    #     else:
-    #         print("No Face Found in Image")
-    #     if encoding is not None:
-    #         faces_db[p.user.username]=encoding
-    #         data=handle_face_db('INSERT',encoding,p.user.username)
-
     faces_encoded=list(faces_db.values())
     known_face_names=list(faces_db.keys())
     #load input image
