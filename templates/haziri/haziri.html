@@ -130,7 +130,7 @@
                       {% csrf_token %}
                       <div class="row" style="margin-bottom: 60px">
                         <div class="col-lg-3" style="margin:auto" id="mudeeriaths_ihasaya_div">
-                          <select id="mudeeriath" name="mudeeriath" class="select" >   
+                          <select id="mudeeriath" name="mudeeriath" class="mudeeriath" >   
                               <option value="all">  مدیریت </option>  
                               {% for mudeeriath in mudeeriaths %}
                               <option value={{mudeeriath.id}}>{{mudeeriath}}</option>  
@@ -227,6 +227,7 @@
                                  }
                                  user=document.getElementsByClassName('user');
                                  mudeeriath=document.getElementsByClassName('mudeeriath');
+
                                  total_present=document.getElementsByClassName('total_present');
                                  total_absent=document.getElementsByClassName('total_absent');
                                  total_leave=document.getElementsByClassName('total_leave');
@@ -251,9 +252,6 @@
                                  const formData = new FormData();
                                  //console.log(report_date)
                                  csrf=document.getElementsByName("csrfmiddlewaretoken").value;
-                                //  console.log("user.length=",user.length)
-                                // postForm={}
-                                 //postForm=[]
                                  monthly_haziri_list=[]//#################yazrzi format
                                  let k=0;
                                  for(let i=0; i<user.length; i++){
@@ -275,7 +273,6 @@
                                 }
                                 
                                 url="/haziri/monthly_haziri/";
-                                //end_date=change_date(end_date)
                                 start_date=change_date(start_date) 
                                 report_date=change_date(report_date[0].value)
 
