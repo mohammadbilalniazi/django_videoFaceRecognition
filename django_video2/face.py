@@ -46,7 +46,6 @@ def encode_face(img):
     return face_encodings
 
 def handle_face_db(operation='GET',encoding=[],username=None):
-    print("")
     database=Path("database.pickle")
     if not database.is_file():
         with open(database,'wb') as f:

@@ -4,21 +4,22 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_video2.face import encode_face,handle_face_db
 
-# Create your models here.
-
 class Profile(models.Model):
     user= models.OneToOneField(User,on_delete=models.CASCADE)
-    photo=models.ImageField(upload_to='photos',blank=True)
+    photo=models.ImageField(upload_to='photos',blank=True,null=True)
     bio=models.TextField()
     created=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'Profile of {self.user.username}'
-    
+
+
 
 @receiver(post_save,sender=Profile)
 def create_image(sender,instance,created,**kwargs):
+
     if created or not created: # not created updated
+        
         username=instance.user.username
         try:
             encodings=encode_face(instance.photo.path)

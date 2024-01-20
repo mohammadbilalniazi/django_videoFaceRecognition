@@ -69,7 +69,7 @@ class ValidTimeHaziri(models.Model):
 LEAVE_CHOICES=((0,0),(1,1),(2,2))# 0 rejected 1 accepted 2 pending 
 
 class LeaveType(models.Model):
-    name=models.CharField(choices=PRSENT_LEAVE_CHOICES,null=True)
+    name=models.CharField(choices=PRSENT_LEAVE_CHOICES,null=True,max_length=50)
     duration=models.SmallIntegerField(default=0)
     is_active=models.BooleanField(default=True)
 

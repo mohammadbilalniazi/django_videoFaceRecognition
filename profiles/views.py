@@ -16,6 +16,8 @@ from profiles.models import Profile
 from django.contrib.auth.models import User
 from django.forms.models import model_to_dict
 from hawala.date_changing import current_shamsi_date 
+from django.conf import settings
+import os
 
 def login_view(request):
     return render(request,'login.html',{})
@@ -40,13 +42,13 @@ def find_user_view(request):
     decoded_file=base64.b64decode(str_img) # base64 file
     # print("decoded_file ",decoded_file)
     contentfile=ContentFile(decoded_file,'upload.png')
-    
+    # print("contentfile ",contentfile)
     # res=classify_face(log.photo.path)
     res=classify_face(contentfile) 
-    print("res=",res)
+    # print("res=",res)
     user_query=User.objects.filter(username=res)
     # print("contentfile ",contentfile) #outputs raw content
-    print("user_query.exists() ",user_query.exists())
+    # print("user_query.exists() ",user_query.exists())
     # log validation
     howmanytimehaziries=HowManyTimeHaziri.objects.all()
     if len(howmanytimehaziries)>0:
@@ -58,19 +60,19 @@ def find_user_view(request):
     if user_query.exists():
         user=user_query[0]
         profile=Profile.objects.get(user=user) 
-        log=FaceLog()
+        # log=FaceLog()
         current=current_shamsi_date()
 
-
         daily_haziris=Daily_Haziri.objects.filter(user=user,date=datetime.strptime(current,"%Y-%m-%d"))
-
         logs=FaceLog.objects.filter(profile=profile,date=datetime.strptime(current,"%Y-%m-%d"))
-        daily_haziri=Daily_Haziri()
         if len(logs)<times:
+            daily_haziri=Daily_Haziri()
+            
             log=FaceLog()
             log.photo=contentfile
-            log.profile=profile
-            
+            # print("path ",log.photo)
+            # log.photo=str(path)
+            log.profile=profile     
             daily_haziri.user=user
             message="Thank You"
             ok=True
@@ -79,7 +81,7 @@ def find_user_view(request):
                 # ok=True
                 # message="Thank You"
             except Exception as e:
-                print("daily haziri ",e)
+                # print("daily haziri ",e)
                 if daily_haziris.count()>0:
                     daily_haziri=daily_haziris[0]
             log.daily_haziri=daily_haziri
@@ -91,7 +93,7 @@ def find_user_view(request):
         if 'groups' in data:
             del data['groups']
       
-        print("data {} ok {} message {} ".format(data,ok,message))
+        # print("data {} ok {} message {} ".format(data,ok,message))
         # login(request,user)
     else:
         data={}

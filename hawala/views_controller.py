@@ -77,6 +77,30 @@ def controller_form(request,id=None):
     
     return HttpResponse(template.render(context,request)) 
 
+
+# Create your models here.
+def delete_file(obj,file_field,message=None):
+    ok=False
+    message=""
+    if hasattr(obj,file_field):
+        file_to_be_deleted=getattr(obj,file_field)
+        import os
+        import pathlib
+        from django.conf import settings
+        complete_path_file=pathlib.PurePath(settings.MEDIA_ROOT,pathlib.Path(file_to_be_deleted.name))
+        if os.path.exists(complete_path_file):
+            os.remove(complete_path_file)
+            ok=True
+            message="file deleted"
+        else:
+            ok=False
+            message="file not exists in storage"
+    else:
+        ok=False
+        message="object has no file"
+    return (ok,message)
+
+
 @login_required(login_url='/')
 @permission_required('hawala.add_controller',login_url='/admin/')
 @permission_required('hawala.change_controller',login_url='/admin/')
@@ -86,7 +110,10 @@ def controller_save(request):
     # return HttpResponse("test")
 
     update_id=request.POST.get("update_id")
-    photo=request.FILES['photo']
+    if "photo" in request.FILES:
+        photo=request.FILES['photo']
+    else:
+        photo=None
     first_name=request.POST.get('first_name')
     last_name=request.POST.get('last_name') 
     father_name=request.POST.get('father_name')
@@ -133,6 +160,10 @@ def controller_save(request):
         obj_cont.mobile_aqarib=mobile_aqarib
         obj_cont.mobile=mobile
         obj_cont.password=password
+            
+        profile=Profile.objects.get(user=user)
+        (ok,message)=delete_file(profile,"photo")
+        print("ok ",ok," message ",message)
         # return HttpResponse("update")    
     else: # new user
         
@@ -165,7 +196,7 @@ def controller_save(request):
         if profile_query.count()>0:
             profile=profile_query[0]
         else:
-            profile=Profile()
+            profile=Profile() 
         profile.photo=photo
         profile.bio="nothing"
         profile.save()
