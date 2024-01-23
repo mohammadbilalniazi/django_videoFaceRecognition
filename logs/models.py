@@ -1,6 +1,8 @@
 from django.db import models
 from profiles.models import Profile
 from datetime import datetime
+from django.dispatch import receiver
+from django.db.models.signals import post_delete
 from hawala.date_changing import current_shamsi_date 
 from haziri.models import Daily_Haziri
 # Create your models here.
@@ -50,3 +52,12 @@ class FaceLog(models.Model):
         else:
             return "No Profile"
 
+@receiver(post_delete,sender=FaceLog)
+def cleanPhoto(sender,instance,created,**kwargs):
+    from common.file_management import delete_file
+    (ok,message)=delete_file(instance,"photo")
+    if ok:
+        print("ok file removed message ",message)
+    else:
+        print("not ok file not removed message ",message)
+    return

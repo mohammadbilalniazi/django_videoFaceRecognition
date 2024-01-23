@@ -14,6 +14,7 @@ from rest_framework.decorators import api_view
 import json
 from django.http import JsonResponse
 from .views_hawala import get_mudeeriath
+from common.file_management import delete_file
 @login_required(login_url='/')
 @permission_required('hawala.view_controller',login_url='')
 def controller_show(request,mudeeriath=None):
@@ -78,28 +79,6 @@ def controller_form(request,id=None):
     return HttpResponse(template.render(context,request)) 
 
 
-# Create your models here.
-def delete_file(obj,file_field,message=None):
-    ok=False
-    message=""
-    if hasattr(obj,file_field):
-        file_to_be_deleted=getattr(obj,file_field)
-        import os
-        import pathlib
-        from django.conf import settings
-        complete_path_file=pathlib.PurePath(settings.MEDIA_ROOT,pathlib.Path(file_to_be_deleted.name))
-        if os.path.exists(complete_path_file):
-            os.remove(complete_path_file)
-            ok=True
-            message="file deleted"
-        else:
-            ok=False
-            message="file not exists in storage"
-    else:
-        ok=False
-        message="object has no file"
-    return (ok,message)
-
 
 @login_required(login_url='/')
 @permission_required('hawala.add_controller',login_url='/admin/')
@@ -162,6 +141,7 @@ def controller_save(request):
         obj_cont.password=password
             
         profile=Profile.objects.get(user=user)
+        
         (ok,message)=delete_file(profile,"photo")
         print("ok ",ok," message ",message)
         # return HttpResponse("update")    
