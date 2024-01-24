@@ -10,6 +10,9 @@ def classify_face(img):
     faces_db=handle_face_db()
     faces_encoded=list(faces_db.values())
     known_face_names=list(faces_db.keys())
+    print("faces_encoded ",faces_encoded)
+    print("known_face_names ",known_face_names)
+
     #load input image
     img=face_recognition.load_image_file(img)
      
@@ -35,8 +38,9 @@ def classify_face(img):
             
             faces_names.append(name)
         return faces_names[0] # return the name of the first face in the input image
-    except: 
+    except Exception as e: 
         #if no faces are found in the input image or an error occured
+        print("e ",e)
         return False
     
 

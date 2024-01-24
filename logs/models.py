@@ -53,7 +53,7 @@ class FaceLog(models.Model):
             return "No Profile"
 
 @receiver(post_delete,sender=FaceLog)
-def cleanPhoto(sender,instance,created,**kwargs):
+def cleanPhoto(sender,instance,using,**kwargs):
     from common.file_management import delete_file
     (ok,message)=delete_file(instance,"photo")
     if ok:

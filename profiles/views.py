@@ -45,7 +45,7 @@ def find_user_view(request):
     # print("contentfile ",contentfile)
     # res=classify_face(log.photo.path)
     res=classify_face(contentfile) 
-    # print("res=",res)
+    print("res=",res)
     user_query=User.objects.filter(username=res)
     # print("contentfile ",contentfile) #outputs raw content
     # print("user_query.exists() ",user_query.exists())

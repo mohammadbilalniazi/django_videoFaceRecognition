@@ -48,9 +48,10 @@ def mudeeriath_delete(request,id):
 @permission_required('hawala.add_mudeeriath',login_url='/admin')
 def mudeeriath_form(request,update_id=None):
     template=loader.get_template('hawala/mudeeriath_registration_user.html')
+    
     context={
         # "groups":Group.objects.all().exclude(name="controllers_sub_users")
-        'groups':Group.objects.filter(name="controller_user")
+        'groups':Group.objects.all()
     }
     
     if update_id is not None:
