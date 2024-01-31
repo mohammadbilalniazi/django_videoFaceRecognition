@@ -527,8 +527,8 @@
                                                 <div class="form-group">
                                                     <label id="password_label"> Photo </label>
                                                     <div>
-                                                        <input type="file" tabindex="13" name="photo" id="photo" required>
-                                                        <img src="{{controller_obj.user.profile.photo.url}}" width="200px" height="200px"/>
+                                                        <input type="file"  tabindex="13" name="photo" id="photo" required>
+                                                        <img src="{{controller_obj.user.profile.photo.url}}" id="photo_show" width="200px" height="200px"/>
                                                     </div>
                                                 </div> 
                                                
@@ -655,6 +655,17 @@
     id_dob=document.getElementById("id_dob");
     dob_for_updation=document.getElementById("dob_for_updation");
     id_dob.value=dob_for_updation.value;
+
+
+    let photo=document.getElementById("photo");
+    photo.addEventListener('change',e=>{
+        let reader=new FileReader();
+        reader.onload=function(e){
+            let photo_show=document.getElementById("photo_show");
+            photo_show.src=e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    })
 
  </script>
 

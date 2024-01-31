@@ -33,8 +33,7 @@ def daily_haziri_report(request,mudeeriath_id=None,user=None,year=None,month=Non
     else:
         # logs=FaceLog.objects.filter(year=int(year),month=int(month))
         initial_date=datetime.strptime(str(year)+"-"+str(month)+"-01",'%Y-%m-%d')
-        last_date=datetime.strptime(str(year)+"-"+str(month)+"-31",'%Y-%m-%d')
-        daily_haziries=Daily_Haziri.objects.filter(date__range=[initial_date,last_date])
+        daily_haziries=Daily_Haziri.objects.filter(date__range=[initial_date,current_date])
         # print("year=int(year),month=int(month) ",logs)
     if mudeeriath_id!=None:  
         # logs=logs.filter(profile__user__controller__mudeeriath__id=mudeeriath_id)
@@ -51,8 +50,11 @@ def daily_haziri_report(request,mudeeriath_id=None,user=None,year=None,month=Non
     
     mudeeriaths=Mudeeriath.objects.all()
     users=User.objects.filter(Q(mudeeriath__id=mudeeriath_id) | Q(controller__mudeeriath__id=mudeeriath_id))
+    if users.count()==0:
+        users=User.objects.filter(id=request.user.id)
     months=[{"value":month[0],"label":month[1]} for month in MONTHS]
     # print("logs ",logs," mudeeriaths ",mudeeriaths)
+    print("users ",users)
     # print("daily_haziries.log.set ",daily_haziries[3].log_set.all())
     # context['logs']=logs
     context['daily_haziries']=daily_haziries
